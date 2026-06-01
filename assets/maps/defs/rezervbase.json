@@ -1,0 +1,13 @@
+﻿{
+  "locationIds": [
+    "RezervBase",
+    "rezervbase"
+  ],
+  "svgFile": "Reserve.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -303.5,
+  "boundsMinY": -275,
+  "boundsMaxX": 292,
+  "boundsMaxY": 271.5
+}

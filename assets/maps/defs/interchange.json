@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "Interchange"
+  ],
+  "svgFile": "Interchange.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -364,
+  "boundsMinY": -443,
+  "boundsMaxX": 534,
+  "boundsMaxY": 452
+}

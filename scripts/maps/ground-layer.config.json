@@ -1,0 +1,34 @@
+{
+  "defaults": {
+    "layerIdCandidates": [
+      "Ground_Level",
+      "Ground_Floor",
+      "First_Level"
+    ],
+    "removeGroupIdPatterns": [
+      "^Connector",
+      "^Doors$",
+      "^Details$"
+    ],
+    "removeRootGroupIds": [],
+    "removeClassTokens": [
+      "shadow",
+      "task"
+    ],
+    "removeStyleRulePatterns": [
+      "\\.shadow\\s*\\{[^}]*\\}",
+      "filter\\s*:\\s*drop-shadow[^;]*;?"
+    ]
+  },
+  "maps": {
+    "Factory.svg": {
+      "layerId": "Ground_Floor"
+    },
+    "Labs.svg": {
+      "layerId": "First_Level"
+    },
+    "Labyrinth.svg": {
+      "useFullDocument": true
+    }
+  }
+}

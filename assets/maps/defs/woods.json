@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "Woods"
+  ],
+  "svgFile": "Woods.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -756,
+  "boundsMinY": -915,
+  "boundsMaxX": 647,
+  "boundsMaxY": 443
+}

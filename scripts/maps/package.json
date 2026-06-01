@@ -1,0 +1,12 @@
+{
+  "name": "careerlog-map-pipeline",
+  "private": true,
+  "type": "module",
+  "description": "Extract ground-layer debrief SVGs from bundled tarkov-dev sources.",
+  "scripts": {
+    "build": "node extract-ground-layer.mjs"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.8"
+  }
+}

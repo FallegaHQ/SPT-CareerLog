@@ -1,0 +1,9 @@
+bin/
+obj/
+.idea/
+Package/
+*.user
+*.suo
+certs/
+*.pfx
+scripts/maps/node_modules/

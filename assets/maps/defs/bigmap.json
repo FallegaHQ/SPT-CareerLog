@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "bigmap"
+  ],
+  "svgFile": "Customs.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -372,
+  "boundsMinY": -306,
+  "boundsMaxX": 698,
+  "boundsMaxY": 235
+}

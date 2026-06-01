@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "laboratory"
+  ],
+  "svgFile": "Labs.svg",
+  "coordinateRotation": 270,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -292,
+  "boundsMinY": -441,
+  "boundsMaxX": -96,
+  "boundsMaxY": -223
+}

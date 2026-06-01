@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "Lighthouse"
+  ],
+  "svgFile": "Lighthouse.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -545,
+  "boundsMinY": -998,
+  "boundsMaxX": 512,
+  "boundsMaxY": 721
+}

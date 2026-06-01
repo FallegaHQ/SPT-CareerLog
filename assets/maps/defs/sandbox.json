@@ -1,0 +1,14 @@
+﻿{
+  "locationIds": [
+    "Sandbox",
+    "Sandbox_high",
+    "Sandbox_start"
+  ],
+  "svgFile": "GroundZero.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -99,
+  "boundsMinY": -124,
+  "boundsMaxX": 249,
+  "boundsMaxY": 364
+}

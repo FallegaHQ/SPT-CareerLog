@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "TarkovStreets"
+  ],
+  "svgFile": "StreetsOfTarkov.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -279,
+  "boundsMinY": -299,
+  "boundsMaxX": 324,
+  "boundsMaxY": 533
+}

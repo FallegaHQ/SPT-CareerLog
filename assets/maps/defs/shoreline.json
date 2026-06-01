@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "Shoreline"
+  ],
+  "svgFile": "Shoreline.svg",
+  "coordinateRotation": 180,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -1060,
+  "boundsMinY": -415,
+  "boundsMaxX": 508,
+  "boundsMaxY": 622
+}

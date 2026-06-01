@@ -1,0 +1,12 @@
+﻿{
+  "locationIds": [
+    "Labyrinth"
+  ],
+  "svgFile": "Labyrinth.svg",
+  "coordinateRotation": 90,
+  "trailOverlayRotation": 180,
+  "boundsMinX": -52.5,
+  "boundsMinY": -36.5,
+  "boundsMaxX": 50.7,
+  "boundsMaxY": 75.3
+}

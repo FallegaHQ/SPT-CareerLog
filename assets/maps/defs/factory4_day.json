@@ -1,0 +1,13 @@
+﻿{
+  "locationIds": [
+    "factory4_day",
+    "factory4_night"
+  ],
+  "svgFile": "Factory.svg",
+  "coordinateRotation": 90,
+  "trailOverlayRotation": 90,
+  "boundsMinX": -65,
+  "boundsMinY": -64.5,
+  "boundsMaxX": 77.6,
+  "boundsMaxY": 67.2
+}
