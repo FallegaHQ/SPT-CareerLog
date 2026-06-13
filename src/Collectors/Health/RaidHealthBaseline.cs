@@ -1,5 +1,4 @@
 using EFT;
-using EFT.HealthSystem;
 using System;
 
 namespace Softwyx.CareerLog.Collectors.Health;
@@ -14,12 +13,12 @@ internal static class RaidHealthBaseline{
     public static void Capture(Player player){
         MaxBodyHealth = 0f;
 
-        if(player?.HealthController is not IHealthController health) return;
+        if(player?.HealthController is not {} health) return;
 
         foreach(EBodyPart part in Enum.GetValues(typeof(EBodyPart))){
             if(part == EBodyPart.Common) continue;
 
-            MaxBodyHealth += health.GetBodyPartHealth(part, false).
+            MaxBodyHealth += health.GetBodyPartHealth(part).
                                     Maximum;
         }
     }

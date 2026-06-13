@@ -104,4 +104,10 @@ internal static class UiHierarchy{
         public const string IconContainer = "IconContainer";
         public const string Icon          = "Icon";
     }
+
+    /// <summary>PiT Fireteam menu objects (clone source = Character / player button).</summary>
+    internal static class PitFireTeam{
+        public const string SquadScreenRoot   = "pitFireTeam_SquadControlScreen";
+        public const string AddTeammateButton = "pitFireTeam_SquadControlAddTeammateButton";
+    }
 }

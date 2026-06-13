@@ -2,3 +2,8 @@ version: "1.0"
 ide: QDNET
 profile:
   name: qodana.recommended
+exclude:
+  - name: All
+    paths:
+      - assets
+  - name: Unity.PerformanceCriticalCodeInvocation

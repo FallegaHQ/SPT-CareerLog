@@ -240,7 +240,7 @@ function buildDebriefSvg(sourceText, fileName, mapConfig) {
     cleanupSubtree(contentClone, mapConfig);
 
     const outDoc = parser.parseFromString(
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg" ></svg>',
         "image/svg+xml"
     );
     const outSvg = outDoc.documentElement;

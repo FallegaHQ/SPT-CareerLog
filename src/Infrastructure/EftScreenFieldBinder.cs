@@ -21,14 +21,4 @@ internal static class EftScreenFieldBinder{
 
         return (TField) field.GetValue(instance);
     }
-
-    public static TProperty GetProperty<TProperty>(object instance, string propertyName){
-        if(instance == null) return default;
-
-        var property = AccessTools.Property(instance.GetType(), propertyName);
-
-        if(property == null) return default;
-
-        return (TProperty) property.GetValue(instance);
-    }
 }

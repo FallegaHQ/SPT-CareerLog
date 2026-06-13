@@ -22,7 +22,9 @@ internal sealed class DoorUnlockPatch : ModulePatch{
     private static void Postfix(WorldInteractiveObject __instance){
         if(!Settings.Enabled.Value || !CareerLogSession.CollectorsActive) return;
 
-        if(__instance?.InteractingPlayer is not Player player || !player.IsYourPlayer) return;
+        if(__instance?.InteractingPlayer is not Player{
+                                                    IsYourPlayer: true
+                                                }) return;
 
         DoorUnlockMarkerCollector.Record(__instance);
     }

@@ -311,7 +311,7 @@ internal sealed class PlaybackBarView : MonoBehaviour{
         rect.localPosition = Vector3.zero;
     }
 
-    public static string TimeFormat(float secondsFromStart){
+    private static string TimeFormat(float secondsFromStart){
         if(secondsFromStart < 0f) secondsFromStart = 0f;
 
         var span = TimeSpan.FromSeconds(secondsFromStart);

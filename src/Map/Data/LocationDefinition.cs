@@ -2,46 +2,43 @@ using System.Collections.Generic;
 
 namespace Softwyx.CareerLog.Map.Data;
 
-internal sealed class LocationDefinition{
+internal sealed class LocationDefinition(
+    string svgFile,
+    float  coordinateRotation,
+    float  boundsMinX,
+    float  boundsMinY,
+    float  boundsMaxX,
+    float  boundsMaxY
+){
     public List<string> LocationIds{
         get;
-        set;
     } = [];
 
-    public string SvgFile{
+    private string SvgFile{
         get;
-        set;
-    }
+    } = svgFile;
 
     public float CoordinateRotation{
         get;
-        set;
-    }
+    } = coordinateRotation;
 
-    public float TrailOverlayRotation{
-        get;
-        set;
-    } = 180f;
+    public static float TrailOverlayRotation => 180f;
 
     public float BoundsMinX{
         get;
-        set;
-    }
+    } = boundsMinX;
 
     public float BoundsMinY{
         get;
-        set;
-    }
+    } = boundsMinY;
 
     public float BoundsMaxX{
         get;
-        set;
-    }
+    } = boundsMaxX;
 
     public float BoundsMaxY{
         get;
-        set;
-    }
+    } = boundsMaxY;
 
     public string SvgPath => PluginPaths.MapDisplaySvgFile(SvgFile);
 }

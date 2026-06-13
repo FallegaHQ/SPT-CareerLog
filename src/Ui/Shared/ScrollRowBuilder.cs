@@ -161,7 +161,14 @@ internal static class ScrollRowBuilder{
         bodyElement.flexibleWidth = 1f;
 
         var text = bodyObject.AddComponent<TextMeshProUGUI>();
-        ConfigureText(text, body, Typography.Body, style.CaptionColor, style.Font, TextAlignmentOptions.TopLeft);
+        ConfigureText(
+                      text,
+                      body,
+                      Typography.Body,
+                      style.CaptionColor,
+                      style.Font,
+                      TextAlignmentOptions.TopLeft
+                     );
         text.enableWordWrapping = true;
     }
 

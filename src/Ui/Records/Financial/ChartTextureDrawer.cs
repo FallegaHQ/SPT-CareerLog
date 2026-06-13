@@ -130,9 +130,9 @@ internal static class ChartTextureDrawer{
     }
 
     private static void DrawHorizontalLine(Color32[] pixels, int x0, int x1, float y, Color32 color){
-        var half = GridLineWidth * 0.5f;
-        var yLo  = Mathf.Clamp(Mathf.FloorToInt(y - half), 0, DefaultHeight - 1);
-        var yHi  = Mathf.Clamp(Mathf.CeilToInt(y  + half), 0, DefaultHeight - 1);
+        const float half = GridLineWidth * 0.5f;
+        var         yLo  = Mathf.Clamp(Mathf.FloorToInt(y - half), 0, DefaultHeight - 1);
+        var         yHi  = Mathf.Clamp(Mathf.CeilToInt(y  + half), 0, DefaultHeight - 1);
 
         for(var yi = yLo; yi <= yHi; yi++)
             for(var x = x0; x < x1; x++){
@@ -143,11 +143,11 @@ internal static class ChartTextureDrawer{
     }
 
     private static void DrawVerticalLine(Color32[] pixels, float x, float y0, float y1, Color32 color){
-        var half = GridLineWidth * 0.5f;
-        var xLo  = Mathf.Clamp(Mathf.FloorToInt(x - half),          0, DefaultWidth  - 1);
-        var xHi  = Mathf.Clamp(Mathf.CeilToInt(x  + half),          0, DefaultWidth  - 1);
-        var lo   = Mathf.Clamp(Mathf.FloorToInt(Mathf.Min(y0, y1)), 0, DefaultHeight - 1);
-        var hi   = Mathf.Clamp(Mathf.CeilToInt(Mathf.Max(y0, y1)),  0, DefaultHeight - 1);
+        const float half = GridLineWidth * 0.5f;
+        var         xLo  = Mathf.Clamp(Mathf.FloorToInt(x - half),          0, DefaultWidth  - 1);
+        var         xHi  = Mathf.Clamp(Mathf.CeilToInt(x  + half),          0, DefaultWidth  - 1);
+        var         lo   = Mathf.Clamp(Mathf.FloorToInt(Mathf.Min(y0, y1)), 0, DefaultHeight - 1);
+        var         hi   = Mathf.Clamp(Mathf.CeilToInt(Mathf.Max(y0, y1)),  0, DefaultHeight - 1);
 
         for(var xi = xLo; xi <= xHi; xi++)
             for(var y = lo; y <= hi; y++)

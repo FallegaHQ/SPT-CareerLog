@@ -1,7 +1,7 @@
 using System.Collections;
-using BepInEx.Bootstrap;
 using EFT;
 using EFT.UI;
+using Softwyx.CareerLog.Compat;
 using Softwyx.CareerLog.Infrastructure;
 using UnityEngine;
 
@@ -12,8 +12,6 @@ namespace Softwyx.CareerLog.Ui.Records.Menu;
 /// then re-applies once after Menu Overhaul finishes its stack.
 /// </summary>
 internal static class LayoutRunner{
-    private const string PitFireTeamPluginGuid = "xyz.pit.fireteam";
-
     private const int PitFireTeamSettleFrames      = 2;
     private const int OverhaulExtraFrames          = 3;
     private const int InitialFrameDelay            = 4;
@@ -21,8 +19,6 @@ internal static class LayoutRunner{
     private const int PitFireTeamPollTimeoutFrames = 8;
 
     private static Coroutine _layoutCoroutine;
-
-    private static bool IsPitFireTeamLoaded => Chainloader.PluginInfos.ContainsKey(PitFireTeamPluginGuid);
 
     public static void Schedule(MenuScreen menuScreen, Profile profile){
         if(!menuScreen) return;
@@ -79,7 +75,7 @@ internal static class LayoutRunner{
     /// Poll until PitFireTeam (re)creates the squad button, then wait a few frames so their layout can finish.
     /// </summary>
     private static IEnumerator WaitForPitFireTeamSquadReady(MenuScreen menuScreen){
-        if(!IsPitFireTeamLoaded) yield break;
+        if(!PitFireTeamCompat.IsLoaded) yield break;
 
         var waited = 0;
 

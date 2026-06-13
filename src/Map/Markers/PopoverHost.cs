@@ -15,15 +15,15 @@ internal sealed class PopoverHost : MonoBehaviour{
 
     private static readonly Vector2 DefaultPopoverSize = new(PopoverMinWidth, 48f);
 
-    private RectTransform     _viewport;
-    private RectTransform     _presentationRoot;
-    private RectTransform     _popover;
-    private TextMeshProUGUI   _titleText;
-    private TextMeshProUGUI   _bodyText;
-    private TMP_FontAsset     _labelFont;
-    private RectTransform     _activeMarker;
-    private VictimOverlay     _victimOverlay;
-    private PopoverPanelHover _panelHover;
+    private RectTransform   _viewport;
+    private RectTransform   _presentationRoot;
+    private RectTransform   _popover;
+    private TextMeshProUGUI _titleText;
+    private TextMeshProUGUI _bodyText;
+    private TMP_FontAsset   _labelFont;
+    private RectTransform      _activeMarker;
+    private VictimOverlay      _victimOverlay;
+    private PopoverPanelHover  _panelHover;
 
     private void Awake(){
         _viewport = transform as RectTransform;

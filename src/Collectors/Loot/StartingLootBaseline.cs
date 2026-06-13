@@ -69,19 +69,17 @@ internal static class StartingLootBaseline{
         var valueLost      = 0L;
         var itemsFullyLost = 0;
 
-        foreach(var pair in ValueAtStartByItemId){
-            var startValue = pair.Value;
+        foreach(var (itemKey, itemStartValue) in ValueAtStartByItemId){
+            if(itemStartValue <= 0L) continue;
 
-            if(startValue <= 0L) continue;
-
-            if(!currentValueById.TryGetValue(pair.Key, out var currentValue)){
-                valueLost      += startValue;
+            if(!currentValueById.TryGetValue(itemKey, out var currentValue)){
+                valueLost      += itemStartValue;
                 itemsFullyLost += 1;
 
                 continue;
             }
 
-            if(currentValue < startValue) valueLost += startValue - currentValue;
+            if(currentValue < itemStartValue) valueLost += itemStartValue - currentValue;
         }
 
         return (itemsFullyLost, valueLost);

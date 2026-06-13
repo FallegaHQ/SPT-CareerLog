@@ -61,7 +61,7 @@ internal readonly struct ChartPlotLayout(
     } = height - padTop - padBottom;
 
     /// <summary>Fraction of plot height reserved above the highest data value.</summary>
-    public const float TopHeadroomRatio = 0.10f;
+    private const float TopHeadroomRatio = 0.10f;
 
     public static long ComputeDisplayMax(long dataMax){
         if(dataMax <= 0L) return 1L;

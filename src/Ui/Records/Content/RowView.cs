@@ -2,7 +2,6 @@ using System;
 using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Formatting;
-using Softwyx.CareerLog.Ui.Shared;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

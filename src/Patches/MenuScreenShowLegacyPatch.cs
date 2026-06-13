@@ -27,6 +27,7 @@ internal sealed class MenuScreenShowLegacyPatch : ModulePatch{
     }
 
     [PatchPostfix]
+    [HarmonyPriority(Priority.First)]
     private static void Postfix(MenuScreen __instance, Profile profile){
         MenuBootstrap.OnMenuShown(__instance, profile);
     }

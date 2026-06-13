@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using EFT;
 using EFT.UI;
+using Softwyx.CareerLog.Compat;
 using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Interop;
 using UnityEngine;
@@ -41,6 +42,9 @@ internal static class ButtonLayout{
         _layoutRevealReady = false;
         StopRevealCoroutine();
 
+        if(PitFireTeamCompat.ShouldPreserveCharacterButtonTemplate)
+            PitFireTeamCompat.StripLayoutCanvasGroup(MenuScreenReflection.GetCharacterButton(menuScreen));
+
         EnsureRecordsButton(menuScreen);
 
         if(_recordsButton) _recordsButton.gameObject.SetActive(true);
@@ -61,6 +65,8 @@ internal static class ButtonLayout{
 
         MenuButtonReveal.HideStack(menuScreen, _recordsButton);
         SyncVisibility(menuScreen);
+
+        if(PitFireTeamCompat.IsLoaded) PitFireTeamCompat.RepairOverlayButtons(menuScreen);
     }
 
     public static void RevealMenuStack(MenuScreen menuScreen){
@@ -74,6 +80,7 @@ internal static class ButtonLayout{
         if(!CareerLogPlugin.Instance){
             MenuButtonReveal.RevealImmediate(menuScreen, showRecords ? _recordsButton : null);
             MenuButtonReveal.FinalizeStack(menuScreen, showRecords ? _recordsButton : null);
+            PitFireTeamCompat.RepairOverlayButtons(menuScreen);
             SyncVisibility(menuScreen);
 
             return;
@@ -82,16 +89,15 @@ internal static class ButtonLayout{
         _revealCoroutine = CareerLogPlugin.Instance.StartCoroutine(RevealMenuStackRoutine(menuScreen, showRecords));
     }
 
-    public static void RevealMenuButton(MenuScreen menuScreen){
-        RevealMenuStack(menuScreen);
-    }
-
     private static IEnumerator RevealMenuStackRoutine(MenuScreen menuScreen, bool showRecords){
-        yield return MenuButtonReveal.RevealStaggered(menuScreen, showRecords ? _recordsButton : null);
+        MenuButtonReveal.RevealImmediate(menuScreen, showRecords ? _recordsButton : null);
 
         MenuButtonReveal.FinalizeStack(menuScreen, showRecords ? _recordsButton : null);
+        PitFireTeamCompat.RepairOverlayButtons(menuScreen);
         _revealCoroutine = null;
         SyncVisibility(menuScreen);
+
+        yield break;
     }
 
     public static void SyncVisibility(MenuScreen menuScreen){
@@ -194,13 +200,22 @@ internal static class ButtonLayout{
     }
 
     private static void ApplyMenuOverhaulLayout(MenuScreen menuScreen, RectTransform recordsRect){
-        // Menu Overhaul stack (x=250, 60px steps): Play 0, Character 1, RECORDS 2, Trade 3, Hideout 4, Exit 5.
-        // With PitFireTeam, MY SQUAD occupies the gap under Character -- lift Play/Character/RECORDS one slot (+Y).
-        var stackLift = MenuScreenReflection.GetSquadControlButton(menuScreen) ? OverhaulButtonYStep : 0f;
+        // Menu Overhaul stack (x=250, 60px steps). MY SQUAD sits at slot 2 when PiT is loaded;
+        // Trade/Hideout/Exit keep the same indices as without PiT (no extra gap below RECORDS).
+        var squadButton = MenuScreenReflection.GetSquadControlButton(menuScreen);
+        var stackLift   = squadButton ? OverhaulButtonYStep : 0f;
+        var recordsSlot = squadButton ? 3 : 2;
 
         PositionOverhaulButton(menuScreen, GameAssemblyNames.MenuScreenHierarchy.PlayButton,      0, stackLift);
         PositionOverhaulButton(menuScreen, GameAssemblyNames.MenuScreenHierarchy.CharacterButton, 1, stackLift);
-        ApplyOverhaulTransform(recordsRect, -OverhaulButtonYStep * 2f + stackLift);
+
+        if(squadButton){
+            var squadRect = squadButton.GetComponent<RectTransform>();
+
+            if(squadRect) ApplyOverhaulTransform(squadRect, -OverhaulButtonYStep * 2f + stackLift);
+        }
+
+        ApplyOverhaulTransform(recordsRect, -OverhaulButtonYStep * recordsSlot + stackLift);
 
         PositionOverhaulButton(menuScreen, GameAssemblyNames.MenuScreenHierarchy.TradeButton,     3);
         PositionOverhaulButton(menuScreen, GameAssemblyNames.MenuScreenHierarchy.HideoutButton,   4);
@@ -243,7 +258,7 @@ internal static class ButtonLayout{
         recordsRect.SetParent(playerRect.parent, false);
 
         if(squadRect){
-            ShiftButtonsAbovePlayer(playRect, playerRect, slotOffset);
+            if(!PitFireTeamCompat.IsLoaded) ShiftButtonsAbovePlayer(playRect, playerRect, slotOffset);
 
             recordsRect.anchoredPosition = squadRect.anchoredPosition + new Vector2(0f, slotOffset);
             recordsRect.SetSiblingIndex(squadRect.GetSiblingIndex());
