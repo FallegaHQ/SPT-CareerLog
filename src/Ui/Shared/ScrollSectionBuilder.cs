@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Softwyx.CareerLog.Ui.Shared;
 
-/// <summary>Scroll section shells (header + items panel). Used only via <see cref="ScrollContentBuilder"/>.</summary>
+/// <summary>Scroll section shells (header + items panel). Used only via <see cref="ScrollContentBuilder" />.</summary>
 internal static class ScrollSectionBuilder{
     internal static Transform AddSection(
         Transform contentRoot, string title, ScrollContentBuilder.ScrollTextStyle style

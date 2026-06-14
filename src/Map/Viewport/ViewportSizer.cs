@@ -5,16 +5,16 @@ namespace Softwyx.CareerLog.Map.Viewport;
 
 /// <summary>Re-fits the map when the host viewport receives a real layout size (modal / first frame).</summary>
 internal sealed class ViewportSizer : MonoBehaviour{
-    private RectTransform      _mapRoot;
     private LocationDefinition _definition;
+    private RectTransform      _mapRoot;
+
+    private void OnRectTransformDimensionsChange(){
+        TryFit();
+    }
 
     public void SetTarget(RectTransform mapRoot, LocationDefinition definition){
         _mapRoot    = mapRoot;
         _definition = definition;
-        TryFit();
-    }
-
-    private void OnRectTransformDimensionsChange(){
         TryFit();
     }
 

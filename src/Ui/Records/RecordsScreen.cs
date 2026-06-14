@@ -11,8 +11,8 @@ using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Ui.Records.Content;
 using Softwyx.CareerLog.Ui.Records.Financial;
 using Softwyx.CareerLog.Ui.Records.Layout;
-using Softwyx.CareerLog.Ui.Records.Menu;
 using Softwyx.CareerLog.Ui.Records.Map;
+using Softwyx.CareerLog.Ui.Records.Menu;
 using Softwyx.CareerLog.Ui.Records.Overview;
 using Softwyx.CareerLog.Ui.Records.PlayerModel;
 using Softwyx.CareerLog.Ui.Shared;
@@ -28,6 +28,15 @@ internal sealed class RecordsScreen : EftScreen<RecordsScreenController, Records
     private TabBarView      _tabBar;
     private Transform       _screenRoot;
     private Profile         _profile;
+
+    private void Awake(){
+        WireBackButton();
+    }
+
+    public override void OnDestroy(){
+        CharacterModelPresenter.Release();
+        base.OnDestroy();
+    }
 
     internal static RecordsScreen CreateFromHandbookTemplate(HandbookScreen template){
         if(!template) return null;
@@ -63,10 +72,6 @@ internal sealed class RecordsScreen : EftScreen<RecordsScreenController, Records
 
         ScrollSettings.ApplyClampedToDescendants(root);
 
-        WireBackButton();
-    }
-
-    private void Awake(){
         WireBackButton();
     }
 
@@ -147,11 +152,6 @@ internal sealed class RecordsScreen : EftScreen<RecordsScreenController, Records
         ProfileRecordsReadApi.Clear();
         NavigationState.Reset();
         base.Close();
-    }
-
-    public override void OnDestroy(){
-        CharacterModelPresenter.Release();
-        base.OnDestroy();
     }
 
     private void OnTabSelected(Tab recordsTab){

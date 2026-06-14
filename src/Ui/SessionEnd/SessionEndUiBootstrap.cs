@@ -5,7 +5,7 @@ using Softwyx.CareerLog.Ui.SessionEnd.Map;
 
 namespace Softwyx.CareerLog.Ui.SessionEnd;
 
-/// <summary>Session-end screen registration -- mirror of menu <see cref="Ui.Records.ScreenBootstrap"/>.</summary>
+/// <summary>Session-end screen registration -- mirror of menu <see cref="Ui.Records.ScreenBootstrap" />.</summary>
 internal static class SessionEndUiBootstrap{
     public static SessionResultRaidMap RaidMapScreen{
         get;

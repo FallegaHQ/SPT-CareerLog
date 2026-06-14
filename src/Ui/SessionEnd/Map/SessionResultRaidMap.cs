@@ -1,8 +1,8 @@
 using Comfort.Common;
 using EFT.InputSystem;
 using EFT.UI;
-using EFT.UI.SessionEnd;
 using EFT.UI.Screens;
+using EFT.UI.SessionEnd;
 using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Map;
@@ -22,6 +22,11 @@ internal sealed class SessionResultRaidMap : EftScreen<MapScreenController, Sess
     private       RectTransform   _mapHost;
     private       RectTransform   _mapViewport;
     private       PanelView       _mapPanel;
+
+    private void Awake(){
+        _nextButton.OnClick.AddListener(OnNextClicked);
+        _backButton.OnClick.AddListener(OnBackClicked);
+    }
 
     internal static SessionResultRaidMap CreateFromTemplate(SessionResultStatistics template){
         if(!template) return null;
@@ -51,11 +56,6 @@ internal sealed class SessionResultRaidMap : EftScreen<MapScreenController, Sess
         SessionEndScrollPaths.HideBlockingPreview(template.transform);
 
         if(_scrollContent) SessionEndScrollPaths.SetScrollChainActive(_scrollContent, false);
-    }
-
-    private void Awake(){
-        _nextButton.OnClick.AddListener(OnNextClicked);
-        _backButton.OnClick.AddListener(OnBackClicked);
     }
 
     public override void Show(MapScreenController controller){

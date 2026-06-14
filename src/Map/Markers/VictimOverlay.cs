@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using Softwyx.CareerLog.Map.Data;
 using Softwyx.CareerLog.Persistence.Models;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,17 +10,23 @@ namespace Softwyx.CareerLog.Map.Markers;
 internal sealed class VictimOverlay : MonoBehaviour{
     private const string LayerName = "MapVictimMarkers";
 
-    private const float VictimScreenPixels = 33f;
-    private const float LinkThickness      = 3f;
+    private const    float         VictimScreenPixels = 33f;
+    private const    float         LinkThickness      = 3f;
+    private readonly List<Vector2> _anchors           = [];
 
-    private readonly List<RectTransform> _icons   = [];
-    private readonly List<Vector2>       _anchors = [];
-    private readonly List<RectTransform> _links   = [];
+    private readonly List<RectTransform> _icons = [];
+    private readonly List<RectTransform> _links = [];
+    private          RectTransform       _activeMarkerRect;
+    private          LocationDefinition  _definition;
 
-    private RectTransform      _layer;
-    private RectTransform      _trailAnchor;
-    private LocationDefinition _definition;
-    private RectTransform      _activeMarkerRect;
+    private RectTransform _layer;
+    private RectTransform _trailAnchor;
+
+    private void LateUpdate(){
+        if(_icons.Count == 0 || !_trailAnchor) return;
+
+        SyncTransforms();
+    }
 
     public void Bind(RectTransform trailAnchor, LocationDefinition definition){
         _trailAnchor = trailAnchor;
@@ -87,12 +93,6 @@ internal sealed class VictimOverlay : MonoBehaviour{
                     _layer.GetChild(i).
                            gameObject
                    );
-    }
-
-    private void LateUpdate(){
-        if(_icons.Count == 0 || !_trailAnchor) return;
-
-        SyncTransforms();
     }
 
     private void EnsureLayer(){

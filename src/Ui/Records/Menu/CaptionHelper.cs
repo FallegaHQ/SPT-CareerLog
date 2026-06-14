@@ -10,10 +10,10 @@ namespace Softwyx.CareerLog.Ui.Records.Menu;
 
 /// <summary>Caption row on the handbook-cloned Records screen -- layout matched to vanilla <c>HandbookScreen/Caption</c>.</summary>
 internal static class CaptionHelper{
+    private const float CaptionTitleFontSize = 36f;
     // Vanilla HandbookScreen/Caption (REPL export); EditBuildScreen uses a different pattern.
     private static readonly Vector2 CaptionIconSizeDelta        = new(42f, 48f);
     private static readonly Vector2 CaptionIconAnchoredPosition = new(42f, 0f);
-    private const           float   CaptionTitleFontSize        = 36f;
 
     public static TextMeshProUGUI Apply(Transform recordsRoot){
         if(!recordsRoot) return null;

@@ -1,19 +1,19 @@
+using System;
+using System.Collections;
 using Softwyx.CareerLog.Map.Data;
 using Softwyx.CareerLog.Map.Markers;
 using Softwyx.CareerLog.Map.Panel;
 using Softwyx.CareerLog.Map.Viewport;
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Map.Chrome;
 
 internal sealed class RaidPlaybackController : MonoBehaviour{
-    private TrailPresenter    _trail;
     private TrailContext      _ctx;
-    private ViewportZoom      _zoom;
     private RaidMovementIndex _index;
     private Coroutine         _tick;
+    private TrailPresenter    _trail;
+    private ViewportZoom      _zoom;
 
     public float CurrentTime{
         get;

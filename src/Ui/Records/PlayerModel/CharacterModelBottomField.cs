@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using EFT;
 using Softwyx.CareerLog.Interop;
@@ -44,39 +45,26 @@ internal static class CharacterModelBottomField{
     }
 
     private static bool IsNicknameText(string objectName, Transform transform){
-        if(objectName.Contains("Nickname", System.StringComparison.OrdinalIgnoreCase)) return true;
+        if(objectName.Contains("Nickname", StringComparison.OrdinalIgnoreCase)) return true;
 
-        if(objectName.Contains("Exp", System.StringComparison.OrdinalIgnoreCase)) return false;
+        if(objectName.Contains("Exp", StringComparison.OrdinalIgnoreCase)) return false;
 
         for(var node = transform.parent; node; node = node.parent)
-            if(string.Equals(
-                             node.name,
-                             UiHierarchy.InventoryCharacterTab.NicknameAndKarma,
-                             System.StringComparison.Ordinal
-                            ))
+            if(string.Equals(node.name, UiHierarchy.InventoryCharacterTab.NicknameAndKarma, StringComparison.Ordinal))
                 return true;
 
         return false;
     }
 
     private static bool IsExperienceValueText(string objectName, Transform transform){
-        if(string.Equals(objectName, UiHierarchy.InventoryCharacterTab.ExpValue, System.StringComparison.Ordinal))
-            return true;
+        if(string.Equals(objectName, UiHierarchy.InventoryCharacterTab.ExpValue, StringComparison.Ordinal)) return true;
 
-        if(!objectName.Contains("Exp", System.StringComparison.OrdinalIgnoreCase)) return false;
+        if(!objectName.Contains("Exp", StringComparison.OrdinalIgnoreCase)) return false;
 
         var parent = transform.parent;
 
         return parent
-            && (string.Equals(
-                              parent.name,
-                              UiHierarchy.InventoryCharacterTab.Experience,
-                              System.StringComparison.Ordinal
-                             )
-             || string.Equals(
-                              parent.name,
-                              UiHierarchy.InventoryCharacterTab.ExperienceRow,
-                              System.StringComparison.Ordinal
-                             ));
+            && (string.Equals(parent.name, UiHierarchy.InventoryCharacterTab.Experience,    StringComparison.Ordinal)
+             || string.Equals(parent.name, UiHierarchy.InventoryCharacterTab.ExperienceRow, StringComparison.Ordinal));
     }
 }

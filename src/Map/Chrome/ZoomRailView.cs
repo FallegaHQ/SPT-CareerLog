@@ -1,3 +1,4 @@
+using System;
 using Softwyx.CareerLog.Map.Viewport;
 using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Shared;
@@ -8,17 +9,29 @@ using UnityEngine.UI;
 namespace Softwyx.CareerLog.Map.Chrome;
 
 internal sealed class ZoomRailView : MonoBehaviour{
-    private const float RailWidth         = 32f;
-    private const float RailHeight        = 216f;
-    private const float HandleSize        = 8f;
-    private const float ButtonHeight      = 22f;
-    private const float RailPadding       = 2f;
-    private const float SliderInsetTop    = ButtonHeight + RailPadding + 4f;
-    private const float SliderInsetBottom = ButtonHeight + RailPadding + 4f;
+    private const float  RailWidth         = 32f;
+    private const float  RailHeight        = 216f;
+    private const float  HandleSize        = 8f;
+    private const float  ButtonHeight      = 22f;
+    private const float  RailPadding       = 2f;
+    private const float  SliderInsetTop    = ButtonHeight + RailPadding + 4f;
+    private const float  SliderInsetBottom = ButtonHeight + RailPadding + 4f;
+    private       Slider _slider;
+    private       bool   _syncing;
 
     private ViewportZoom _zoom;
-    private Slider       _slider;
-    private bool         _syncing;
+
+    private void Update(){
+        if(!_zoom || _syncing || !_slider) return;
+
+        var normalized = _zoom.UserZoomNormalized;
+
+        if(Mathf.Approximately(_slider.value, normalized)) return;
+
+        _syncing      = true;
+        _slider.value = normalized;
+        _syncing      = false;
+    }
 
     public static ZoomRailView Ensure(RectTransform parent){
         var existing = parent.Find("MapZoomRail")?.
@@ -48,18 +61,6 @@ internal sealed class ZoomRailView : MonoBehaviour{
     public void Bind(ViewportZoom zoom){
         _zoom = zoom;
         SyncFromZoom();
-    }
-
-    private void Update(){
-        if(!_zoom || _syncing || !_slider) return;
-
-        var normalized = _zoom.UserZoomNormalized;
-
-        if(Mathf.Approximately(_slider.value, normalized)) return;
-
-        _syncing      = true;
-        _slider.value = normalized;
-        _syncing      = false;
     }
 
     private void Build(RectTransform root){
@@ -131,9 +132,7 @@ internal sealed class ZoomRailView : MonoBehaviour{
         _syncing      = false;
     }
 
-    private static void CreateRailButton(
-        RectTransform root, string objectName, string label, bool top, System.Action onClick
-    ){
+    private static void CreateRailButton(RectTransform root, string objectName, string label, bool top, Action onClick){
         var go   = new GameObject(objectName, typeof(RectTransform), typeof(Image), typeof(Button));
         var rect = go.GetComponent<RectTransform>();
         rect.SetParent(root, false);

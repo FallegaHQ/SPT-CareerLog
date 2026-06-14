@@ -8,8 +8,8 @@ using SPT.Reflection.Patching;
 namespace Softwyx.CareerLog.Patches;
 
 /// <summary>
-/// Merges mod locale JSON when the game applies a UI language
-/// (<see cref="LocaleManagerClass.UpdateApplicationLanguage"/>).
+///     Merges mod locale JSON when the game applies a UI language
+///     (<see cref="LocaleManagerClass.UpdateApplicationLanguage" />).
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class LocaleApplicationLanguagePatch : ModulePatch{

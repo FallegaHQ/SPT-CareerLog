@@ -1,3 +1,4 @@
+using System;
 using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence;
@@ -24,7 +25,7 @@ internal static class ExitOutcomeLabels{
 
         var note = LocaleLoader.Format(ModNoteKey(category));
 
-        return string.Equals(note, ModNoteKey(category), System.StringComparison.Ordinal) ? string.Empty : note;
+        return string.Equals(note, ModNoteKey(category), StringComparison.Ordinal) ? string.Empty : note;
     }
 
     private static string[] GameKeysFor(RaidExitStatus.OutcomeCategory category){

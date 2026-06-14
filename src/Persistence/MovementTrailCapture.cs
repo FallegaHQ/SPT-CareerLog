@@ -1,12 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
 using EFT;
 using Softwyx.CareerLog.Collectors;
+using Softwyx.CareerLog.Collectors.Loot;
 using Softwyx.CareerLog.Collectors.Movement;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Map.Data;
 using Softwyx.CareerLog.Persistence.Markers;
 using Softwyx.CareerLog.Persistence.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Softwyx.CareerLog.Persistence;
 
@@ -27,9 +28,9 @@ internal static class MovementTrailCapture{
         var endRub    = record.Loot?.LoadoutValueEndRub   ?? 0L;
         var values    = BuildTimeline(samples, player, durationSeconds, record.ExitStatus, startRub, endRub);
         var rawEvents = RaidEventMarkerBuffer.TakeSnapshot();
-        Collectors.Loot.LootExtractInventoryReconcile.PruneLootMarkers(rawEvents);
+        LootExtractInventoryReconcile.PruneLootMarkers(rawEvents);
         var events = RaidMarkerSynthesis.Apply(rawEvents, record.LocationId);
-        Collectors.Loot.LootExtractInventoryReconcile.PruneLootMarkers(events);
+        LootExtractInventoryReconcile.PruneLootMarkers(events);
 
         values = MovementTimelineMerge(values, events);
 

@@ -1,11 +1,11 @@
+using System.Collections.Generic;
 using Softwyx.CareerLog.Map.Data;
 using Softwyx.CareerLog.Persistence.Models;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Map.Markers;
 
-/// <summary>Facade for <see cref="ScreenOverlay"/> on the map viewport.</summary>
+/// <summary>Facade for <see cref="ScreenOverlay" /> on the map viewport.</summary>
 internal static class Overlay{
     public static void Rebuild(
         ScreenOverlay      overlay,    RectTransform trailAnchor, IReadOnlyList<RaidMovementValue> markers,

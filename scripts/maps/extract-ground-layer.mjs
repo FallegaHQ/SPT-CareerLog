@@ -1,5 +1,5 @@
-import {readFileSync, writeFileSync, mkdirSync, readdirSync} from "node:fs";
-import {dirname, join, basename} from "node:path";
+import {mkdirSync, readdirSync, readFileSync, writeFileSync} from "node:fs";
+import {dirname, join} from "node:path";
 import {fileURLToPath} from "node:url";
 import {DOMParser, XMLSerializer} from "@xmldom/xmldom";
 

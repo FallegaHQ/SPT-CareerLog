@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Softwyx.CareerLog.Persistence.Financial;
 using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Shared;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,16 +12,16 @@ namespace Softwyx.CareerLog.Ui.Records.Financial;
 
 internal sealed class ChartPanel : MonoBehaviour{
     private RawImage                             _chartImage;
+    private ChartHost                            _host;
     private Image                                _hoverBand;
     private RectTransform                        _hoverBandRect;
-    private ChartTooltip                         _tooltip;
-    private ChartHost                            _host;
+    private int                                  _hoverIndex = -1;
+    private ChartPlotLayout                      _layout;
+    private Action<StashSnapshot>                _onSnapshotClicked;
     private List<ChartPoint>                     _points;
     private ChartStyle                           _style;
-    private ChartPlotLayout                      _layout;
     private ScrollContentBuilder.ScrollTextStyle _textStyle;
-    private Action<StashSnapshot>                _onSnapshotClicked;
-    private int                                  _hoverIndex = -1;
+    private ChartTooltip                         _tooltip;
 
     public static void Install(
         Transform             parent, IReadOnlyList<ChartPoint> points, ScrollContentBuilder.ScrollTextStyle style,

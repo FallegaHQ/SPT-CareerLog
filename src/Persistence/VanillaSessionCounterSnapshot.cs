@@ -6,12 +6,6 @@ using Softwyx.CareerLog.Persistence.Models;
 namespace Softwyx.CareerLog.Persistence;
 
 internal static class VanillaSessionCounterSnapshot{
-    private sealed class CounterSpec{
-        public string                                                  Name;
-        public SessionCountersClass.SessionCounterIdentifierValueClass Id;
-        public CounterValueType                                        ValueType;
-    }
-
     private static readonly CounterSpec[] AllCounters = DiscoverAllCounters();
 
     public static void Capture(SessionCountersClass sessionCounters, RaidRecord record){
@@ -54,5 +48,11 @@ internal static class VanillaSessionCounterSnapshot{
         }
 
         return specs.ToArray();
+    }
+
+    private sealed class CounterSpec{
+        public SessionCountersClass.SessionCounterIdentifierValueClass Id;
+        public string                                                  Name;
+        public CounterValueType                                        ValueType;
     }
 }

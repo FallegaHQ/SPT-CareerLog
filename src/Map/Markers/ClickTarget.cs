@@ -1,5 +1,5 @@
-using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Map.Viewport;
+using Softwyx.CareerLog.Persistence.Models;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,34 +9,13 @@ namespace Softwyx.CareerLog.Map.Markers;
 /// <summary>Clickable map marker that opens the detail popover.</summary>
 internal sealed class ClickTarget : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,
                                     IScrollHandler{
-    private const float MinHitSize = 28f;
+    private const float             MinHitSize = 28f;
+    private       RaidMovementValue _marker;
+    private       Outline           _outline;
 
-    private PopoverHost       _popoverHost;
-    private RaidMovementValue _marker;
-    private RaidRecord        _raid;
-    private Outline           _outline;
-    private GameObject        _zoomBackdrop;
-
-    public void Configure(RaidMovementValue marker, RaidRecord raid, PopoverHost popoverHost){
-        _marker      = marker;
-        _raid        = raid;
-        _popoverHost = popoverHost;
-
-        var image = GetComponent<Image>();
-
-        if(image) image.raycastTarget = true;
-
-        _outline = GetComponent<Outline>();
-        if(_outline) _outline.enabled = false;
-
-        var zoom = GetComponentInParent<ViewportZoom>();
-        _zoomBackdrop = zoom
-                            ? zoom.transform.Find(ViewportZoom.BackdropObjectName)?.
-                                   gameObject
-                            : null;
-
-        EnsureHitSize();
-    }
+    private PopoverHost _popoverHost;
+    private RaidRecord  _raid;
+    private GameObject  _zoomBackdrop;
 
     public void OnPointerClick(PointerEventData eventData){
         if(eventData is not{
@@ -59,6 +38,27 @@ internal sealed class ClickTarget : MonoBehaviour, IPointerClickHandler, IPointe
     public void OnScroll(PointerEventData eventData){
         // Markers should not block zooming (forward wheel to the zoom input surface).
         if(_zoomBackdrop) ExecuteEvents.Execute(_zoomBackdrop, eventData, ExecuteEvents.scrollHandler);
+    }
+
+    public void Configure(RaidMovementValue marker, RaidRecord raid, PopoverHost popoverHost){
+        _marker      = marker;
+        _raid        = raid;
+        _popoverHost = popoverHost;
+
+        var image = GetComponent<Image>();
+
+        if(image) image.raycastTarget = true;
+
+        _outline = GetComponent<Outline>();
+        if(_outline) _outline.enabled = false;
+
+        var zoom = GetComponentInParent<ViewportZoom>();
+        _zoomBackdrop = zoom
+                            ? zoom.transform.Find(ViewportZoom.BackdropObjectName)?.
+                                   gameObject
+                            : null;
+
+        EnsureHitSize();
     }
 
     private void EnsureHitSize(){

@@ -1,9 +1,9 @@
-using Softwyx.CareerLog.Persistence.Financial;
-using Softwyx.CareerLog.Persistence.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using Softwyx.CareerLog.Persistence.Financial;
+using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Persistence;
 
@@ -90,9 +90,13 @@ internal static class SnapshotStore{
 
                 var dayFile = LoadDayFile(profileId, dayEntry.Day);
 
-                if(dayFile?.Snapshots == null || dayFile.Snapshots.Count == 0) continue;
+                if(dayFile?.Snapshots == null) continue;
 
-                result.Add(dayFile.Snapshots[^1]);
+                foreach(var snapshot in dayFile.Snapshots){
+                    if(snapshot == null || !TryParseUtc(snapshot.Utc, out _)) continue;
+
+                    result.Add(snapshot);
+                }
             }
 
             result.Sort((a, b) => string.Compare(a.Utc, b.Utc, StringComparison.Ordinal));

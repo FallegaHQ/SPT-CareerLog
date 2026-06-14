@@ -1,10 +1,10 @@
 namespace Softwyx.CareerLog.Persistence.Models;
 
 /// <summary>
-/// JSON dictionary keys on <see cref="RaidRecord.VanillaSessionCountersLong"/> and
-/// <see cref="RaidRecord.VanillaSessionCountersFloat"/>. Each matches a
-/// <see cref="SessionCounterTypesAbstractClass"/> static field name; captured at raid end by
-/// <see cref="VanillaSessionCounterSnapshot"/>.
+///     JSON dictionary keys on <see cref="RaidRecord.VanillaSessionCountersLong" /> and
+///     <see cref="RaidRecord.VanillaSessionCountersFloat" />. Each matches a
+///     <see cref="SessionCounterTypesAbstractClass" /> static field name; captured at raid end by
+///     <see cref="VanillaSessionCounterSnapshot" />.
 /// </summary>
 internal static class VanillaSessionCounterKeys{
     public const string ExpKillBase               = nameof(SessionCounterTypesAbstractClass.ExpKillBase);

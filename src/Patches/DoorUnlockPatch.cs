@@ -1,11 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT;
 using EFT.Interactive;
 using Softwyx.CareerLog.Collectors.Doors;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 
 namespace Softwyx.CareerLog.Patches;
 
@@ -24,7 +24,8 @@ internal sealed class DoorUnlockPatch : ModulePatch{
 
         if(__instance?.InteractingPlayer is not Player{
                                                     IsYourPlayer: true
-                                                }) return;
+                                                })
+            return;
 
         DoorUnlockMarkerCollector.Record(__instance);
     }

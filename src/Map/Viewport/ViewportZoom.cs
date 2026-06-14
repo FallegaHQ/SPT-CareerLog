@@ -1,6 +1,6 @@
+using System;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Ui.Design;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,20 +12,24 @@ namespace Softwyx.CareerLog.Map.Viewport;
 internal sealed class ViewportZoom : MonoBehaviour{
     internal const string BackdropObjectName = "MapZoomBackdrop";
 
-    private const float MinUserZoom    = 1f;
-    private const float MaxUserZoom    = 9f;
-    private const float WheelZoomStep  = 0.12f;
-    private const float StepZoomFactor = 1.12f;
+    private const float            MinUserZoom    = 1f;
+    private const float            MaxUserZoom    = 9f;
+    private const float            WheelZoomStep  = 0.12f;
+    private const float            StepZoomFactor = 1.12f;
+    private       bool             _canPan;
+    private       TextMeshProUGUI  _controlsHint;
+    private       Action           _dismissPopover;
+    private       float            _fitScale = 1f;
+    private       ZoomInputSurface _inputSurface;
+    private       RectTransform    _mapRoot;
+    private       Vector2          _pan;
+    private       float            _userZoom = 1f;
 
-    private RectTransform    _viewport;
-    private RectTransform    _mapRoot;
-    private float            _fitScale = 1f;
-    private float            _userZoom = 1f;
-    private Vector2          _pan;
-    private bool             _canPan;
-    private TextMeshProUGUI  _controlsHint;
-    private ZoomInputSurface _inputSurface;
-    private Action           _dismissPopover;
+    private RectTransform _viewport;
+
+    public float CombinedScale => _fitScale * _userZoom;
+
+    public float UserZoomNormalized => Mathf.InverseLerp(MinUserZoom, MaxUserZoom, _userZoom);
 
     public void SetDismissPopover(Action dismiss){
         _dismissPopover = dismiss;
@@ -39,10 +43,6 @@ internal sealed class ViewportZoom : MonoBehaviour{
         EnsureControlsHint(viewport);
         ResetView();
     }
-
-    public float CombinedScale => _fitScale * _userZoom;
-
-    public float UserZoomNormalized => Mathf.InverseLerp(MinUserZoom, MaxUserZoom, _userZoom);
 
     public void StepZoomIn(){
         StepZoom(true);
@@ -235,14 +235,6 @@ internal sealed class ViewportZoom : MonoBehaviour{
                                             IPointerClickHandler{
         private ViewportZoom _owner;
 
-        public void Bind(ViewportZoom owner){
-            _owner = owner;
-        }
-
-        public void OnScroll(PointerEventData eventData){
-            _owner?.OnScroll(eventData);
-        }
-
         public void OnBeginDrag(PointerEventData eventData){
             _owner?.OnBeginDrag();
         }
@@ -253,6 +245,14 @@ internal sealed class ViewportZoom : MonoBehaviour{
 
         public void OnPointerClick(PointerEventData eventData){
             _owner?.OnPointerClick(eventData);
+        }
+
+        public void OnScroll(PointerEventData eventData){
+            _owner?.OnScroll(eventData);
+        }
+
+        public void Bind(ViewportZoom owner){
+            _owner = owner;
         }
     }
 }

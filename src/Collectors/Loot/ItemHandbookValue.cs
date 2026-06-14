@@ -1,7 +1,7 @@
-using Comfort.Common;
-using EFT.InventoryLogic;
 using System;
 using System.Collections.Generic;
+using Comfort.Common;
+using EFT.InventoryLogic;
 
 namespace Softwyx.CareerLog.Collectors.Loot;
 
@@ -10,9 +10,9 @@ internal static class ItemHandbookValue{
     private static readonly List<Item> AssembledPartsBuffer = new(64);
 
     /// <summary>
-    /// Handbook buyout for one item.
-    /// Pass <c>itemsCount = 0</c> to use the item's
-    /// <see cref="Item.StackObjectsCount"/> (vanilla flea pricing behaviour).
+    ///     Handbook buyout for one item.
+    ///     Pass <c>itemsCount = 0</c> to use the item's
+    ///     <see cref="Item.StackObjectsCount" /> (vanilla flea pricing behaviour).
     /// </summary>
     public static long BuyoutUnit(Item item, int itemsCount = 0){
         if(item?.TemplateId == null) return 0L;

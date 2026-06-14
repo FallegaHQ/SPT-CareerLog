@@ -1,10 +1,10 @@
+using System;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence.Financial;
 using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Shared;
 using Softwyx.CareerLog.Ui.Utilities;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

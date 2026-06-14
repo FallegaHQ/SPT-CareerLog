@@ -9,8 +9,8 @@ using UnityEngine.UI;
 namespace Softwyx.CareerLog.Ui.Records.Financial;
 
 internal sealed class ChartTooltip : MonoBehaviour{
-    private RectTransform   _panel;
     private TextMeshProUGUI _body;
+    private RectTransform   _panel;
 
     public static ChartTooltip Install(Transform parent, ScrollContentBuilder.ScrollTextStyle style){
         var rootObject = new GameObject("ChartTooltip", typeof(RectTransform), typeof(ChartTooltip));
@@ -57,13 +57,14 @@ internal sealed class ChartTooltip : MonoBehaviour{
             return;
         }
 
-        var snap = point.Snapshot;
+        var snap  = point.Snapshot;
+        var delta = point.DisplayDeltaRubles ?? snap.DeltaRubles;
 
         _body.text = LocaleLoader.Format(
                                          LocaleKeys.ChartTooltip,
                                          ValueFormatter.LocalTime(snap.Utc),
                                          ValueFormatter.Rubles(snap.TotalWorth),
-                                         ValueFormatter.TrendRichText(snap.DeltaRubles)
+                                         ValueFormatter.TrendRichText(delta)
                                         );
 
         gameObject.SetActive(true);

@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Map.Chrome;
 
 internal sealed class ChromeHost : MonoBehaviour{
+    private MarkerTogglesView _markerToggles;
     private PlaybackBarView   _playbackBar;
     private ZoomRailView      _zoomRail;
-    private MarkerTogglesView _markerToggles;
 
     public static ChromeHost Ensure(RectTransform viewport, TMP_FontAsset font){
         if(!viewport) return null;

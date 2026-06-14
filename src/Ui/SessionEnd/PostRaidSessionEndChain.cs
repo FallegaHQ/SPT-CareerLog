@@ -1,10 +1,10 @@
+using System;
 using EFT.UI.Screens;
 using Softwyx.CareerLog.Config;
+using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Session;
 using Softwyx.CareerLog.Ui.SessionEnd.Debrief;
 using Softwyx.CareerLog.Ui.SessionEnd.Map;
-using System;
-using Softwyx.CareerLog.Interop;
 
 namespace Softwyx.CareerLog.Ui.SessionEnd;
 

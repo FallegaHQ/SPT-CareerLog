@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Persistence;
@@ -11,8 +12,8 @@ internal static class RaidRecordMigration{
 
         if(raid.SchemaVersion <= 0) raid.SchemaVersion = CurrentSchemaVersion;
 
-        raid.VanillaSessionCountersLong  ??= new System.Collections.Generic.Dictionary<string, long>();
-        raid.VanillaSessionCountersFloat ??= new System.Collections.Generic.Dictionary<string, float>();
+        raid.VanillaSessionCountersLong  ??= new Dictionary<string, long>();
+        raid.VanillaSessionCountersFloat ??= new Dictionary<string, float>();
 
         if(raid.Movement != null) raid.Movement.Values ??= [];
 

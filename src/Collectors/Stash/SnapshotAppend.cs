@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
 using EFT;
 using Softwyx.CareerLog.Persistence;
 using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Session;
-using System;
-using System.Collections.Generic;
 
 namespace Softwyx.CareerLog.Collectors.Stash;
 

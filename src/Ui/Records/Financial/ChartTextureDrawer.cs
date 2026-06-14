@@ -1,7 +1,7 @@
-using Softwyx.CareerLog.Persistence.Financial;
-using Softwyx.CareerLog.Ui.Design;
 using System;
 using System.Collections.Generic;
+using Softwyx.CareerLog.Persistence.Financial;
+using Softwyx.CareerLog.Ui.Design;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Ui.Records.Financial;

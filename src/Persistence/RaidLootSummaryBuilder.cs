@@ -1,3 +1,4 @@
+using System;
 using EFT;
 using Softwyx.CareerLog.Collectors.Loot;
 using Softwyx.CareerLog.Persistence.Models;
@@ -17,7 +18,7 @@ internal static class RaidLootSummaryBuilder{
                                              LoadoutValueEndRub   = end
                                          };
 
-        if(string.Equals(exitStatus, "Killed", System.StringComparison.Ordinal)){
+        if(string.Equals(exitStatus, "Killed", StringComparison.Ordinal)){
             summary.ItemsLost    = 1;
             summary.ValueLostRub = start;
 

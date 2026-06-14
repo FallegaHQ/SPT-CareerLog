@@ -1,16 +1,17 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT;
 using EFT.InventoryLogic;
 using Softwyx.CareerLog.Collectors.Loot;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Reflection;
 
 namespace Softwyx.CareerLog.Patches;
 
 /// <summary>
-/// Hooks local player's inventory add/remove events during raid so we can cancel loot markers when the item is dropped.
+///     Hooks local player's inventory add/remove events during raid so we can cancel loot markers when the item is
+///     dropped.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class LootInventoryEventsPatch : ModulePatch{

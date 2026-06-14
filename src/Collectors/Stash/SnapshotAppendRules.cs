@@ -1,6 +1,6 @@
-using Softwyx.CareerLog.Persistence.Models;
 using System;
 using System.Globalization;
+using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Collectors.Stash;
 

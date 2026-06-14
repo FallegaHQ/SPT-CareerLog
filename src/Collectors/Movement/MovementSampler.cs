@@ -1,7 +1,7 @@
-using EFT;
-using Softwyx.CareerLog.Config;
 using System.Collections;
 using System.Collections.Generic;
+using EFT;
+using Softwyx.CareerLog.Config;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Collectors.Movement;

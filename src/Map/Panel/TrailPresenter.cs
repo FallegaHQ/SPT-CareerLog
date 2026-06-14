@@ -1,15 +1,15 @@
+using System.Collections.Generic;
 using Softwyx.CareerLog.Map.Markers;
 using Softwyx.CareerLog.Map.Trail;
 using Softwyx.CareerLog.Map.Viewport;
 using Softwyx.CareerLog.Persistence.Models;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Map.Panel;
 
 internal sealed class TrailPresenter(MonoBehaviour host){
-    private Coroutine               _routine;
     private List<RaidMovementValue> _drawnMarkers;
+    private Coroutine               _routine;
 
     internal float DrawTimeSec{
         get;

@@ -1,13 +1,13 @@
-using EFT;
-using EFT.InventoryLogic;
 using System;
 using System.Collections.Generic;
+using EFT;
+using EFT.InventoryLogic;
 
 namespace Softwyx.CareerLog.Collectors.Loot;
 
 /// <summary>
-/// Bring-in gear snapshot at raid start. Used to reject bring-in items from the loot ledger and to
-/// measure bring-in value lost (consumed, used, dropped, etc.) at extract.
+///     Bring-in gear snapshot at raid start. Used to reject bring-in items from the loot ledger and to
+///     measure bring-in value lost (consumed, used, dropped, etc.) at extract.
 /// </summary>
 internal static class StartingLootBaseline{
     private static readonly HashSet<string>          ItemIds              = new(StringComparer.OrdinalIgnoreCase);
@@ -50,7 +50,7 @@ internal static class StartingLootBaseline{
     }
 
     /// <summary>
-    /// Bring-in gear no longer on the player, plus partial stack devaluation (meds, food, ammo, etc.).
+    ///     Bring-in gear no longer on the player, plus partial stack devaluation (meds, food, ammo, etc.).
     /// </summary>
     public static (int itemsFullyLost, long valueLostRub) TakeLoss(Player player){
         if(ValueAtStartByItemId.Count == 0) return (0, 0L);

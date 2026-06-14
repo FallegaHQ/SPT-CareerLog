@@ -10,9 +10,9 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Ui.Records.Menu;
 
 /// <summary>
-/// Inserts the RECORDS menu button.
-/// Layout mirrors SPT-Menu-Overhaul when that mod's
-/// button stack is detected (hierarchy names + x=250 anchor stack).
+///     Inserts the RECORDS menu button.
+///     Layout mirrors SPT-Menu-Overhaul when that mod's
+///     button stack is detected (hierarchy names + x=250 anchor stack).
 /// </summary>
 internal static class ButtonLayout{
     private const float OverhaulButtonX            = 250f;
@@ -477,6 +477,8 @@ internal static class ButtonLayout{
     }
 
     private sealed class MenuButtonSnapshot{
+        private readonly Dictionary<int, Vector2> _originalPositions = new();
+
         public MenuButtonSnapshot(RectTransform play, RectTransform player, float slotSpacing){
             Play        = play;
             Player      = player;
@@ -486,8 +488,6 @@ internal static class ButtonLayout{
 
             _originalPositions[player.GetInstanceID()] = player.anchoredPosition;
         }
-
-        private readonly Dictionary<int, Vector2> _originalPositions = new();
 
         public RectTransform Play{
             get;

@@ -1,4 +1,5 @@
 using System;
+using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence;
 using Softwyx.CareerLog.Ui.Design;
@@ -7,7 +8,6 @@ using Softwyx.CareerLog.Ui.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Softwyx.CareerLog.Interop;
 
 namespace Softwyx.CareerLog.Ui.Records.Content;
 

@@ -12,13 +12,15 @@ internal static class PluginPaths{
     private static string AssetsDirectory  => Path.Combine(PluginDirectory, AssetsFolderName);
     public static  string LocalesDirectory => Path.Combine(PluginDirectory, LocalesFolderName);
 
-    public static string AssetFile(string fileName){
-        return Path.Combine(AssetsDirectory, fileName);
-    }
-
     private static string MapsDirectory => Path.Combine(AssetsDirectory, "maps");
 
     public static string MapDefinitionsDirectory => Path.Combine(MapsDirectory, "defs");
+
+    private static string MapMarkersDirectory => Path.Combine(MapsDirectory, "markers");
+
+    public static string AssetFile(string fileName){
+        return Path.Combine(AssetsDirectory, fileName);
+    }
 
     private static string MapSvgFile(string fileName){
         return Path.Combine(MapsDirectory, fileName);
@@ -32,8 +34,6 @@ internal static class PluginPaths{
 
         return File.Exists(debriefPath) ? debriefPath : MapSvgFile(fileName);
     }
-
-    private static string MapMarkersDirectory => Path.Combine(MapsDirectory, "markers");
 
     public static string MapMarkerFile(string fileName){
         return Path.Combine(MapMarkersDirectory, fileName);

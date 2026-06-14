@@ -64,7 +64,7 @@ internal sealed class HierarchyBuilder{
         TrailOverlay.texture = TrailTexture;
 
         var trailRect = TrailOverlay.rectTransform;
-        trailRect.localRotation = Quaternion.Euler(0f, 0f, LocationDefinition.TrailOverlayRotation);
+        trailRect.localRotation = Quaternion.Euler(0f, 0f, definition.TrailOverlayRotation);
     }
 
     public void FitToViewport(RectTransform viewport, LocationDefinition definition){

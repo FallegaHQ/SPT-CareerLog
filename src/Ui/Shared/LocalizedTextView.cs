@@ -5,8 +5,8 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Ui.Shared;
 
 /// <summary>
-/// Attaches <see cref="LocalizedText"/> so copy updates when the game locale changes
-/// (keys merged via <c>LocaleUpdatePatch</c>).
+///     Attaches <see cref="LocalizedText" /> so copy updates when the game locale changes
+///     (keys merged via <c>LocaleUpdatePatch</c>).
 /// </summary>
 internal static class LocalizedTextView{
     public static void BindKey(Transform textRoot, string localizationKey, string labelChildName = "Label"){

@@ -60,11 +60,11 @@ internal static class ProfileRecordsReadApi{
     }
 
     private sealed class CacheEntry{
-        public string                        ProfileId;
         public long                          IndexTicks;
-        public long                          ProfileTicks;
-        public long                          StashIndexTicks;
-        public IReadOnlyList<RaidIndexEntry> RaidIndex;
+        public string                        ProfileId;
         public ProfileRecord                 ProfileRecord;
+        public long                          ProfileTicks;
+        public IReadOnlyList<RaidIndexEntry> RaidIndex;
+        public long                          StashIndexTicks;
     }
 }

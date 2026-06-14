@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT.HealthSystem;
 using Softwyx.CareerLog.Collectors.Health;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Reflection;
 using BindingFlags = System.Reflection.BindingFlags;
 
 namespace Softwyx.CareerLog.Patches;

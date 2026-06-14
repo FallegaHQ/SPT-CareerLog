@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Softwyx.CareerLog.Infrastructure;
 
-/// <summary>Cached Harmony access for <see cref="MenuScreen"/> UI types and hierarchy.</summary>
+/// <summary>Cached Harmony access for <see cref="MenuScreen" /> UI types and hierarchy.</summary>
 internal static class MenuScreenReflection{
     public static MenuScreenController GetController(MenuScreen menuScreen){
         if(!menuScreen) return null;

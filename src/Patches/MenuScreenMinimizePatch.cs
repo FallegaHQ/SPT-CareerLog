@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT.UI;
 using Softwyx.CareerLog.Config;
+using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Ui.Records.Menu;
 using SPT.Reflection.Patching;
-using System.Reflection;
-using Softwyx.CareerLog.Interop;
 
 namespace Softwyx.CareerLog.Patches;
 

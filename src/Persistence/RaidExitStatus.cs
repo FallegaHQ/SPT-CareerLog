@@ -1,20 +1,11 @@
+using System;
 using EFT;
 
 namespace Softwyx.CareerLog.Persistence;
 
 internal static class RaidExitStatus{
-    internal enum OutcomeCategory{
-        Unknown,
-        Survived,
-        RunThrough,
-        Killed,
-        MissingInAction,
-        Left,
-        Transit
-    }
-
     public static OutcomeCategory Classify(string exitStatus){
-        if(string.IsNullOrEmpty(exitStatus) || !System.Enum.TryParse(exitStatus, true, out ExitStatus parsed))
+        if(string.IsNullOrEmpty(exitStatus) || !Enum.TryParse(exitStatus, true, out ExitStatus parsed))
             return OutcomeCategory.Unknown;
 
         return parsed switch{
@@ -41,5 +32,15 @@ internal static class RaidExitStatus{
                         or OutcomeCategory.MissingInAction
                         or OutcomeCategory.Left
                         or OutcomeCategory.Unknown;
+    }
+
+    internal enum OutcomeCategory{
+        Unknown,
+        Survived,
+        RunThrough,
+        Killed,
+        MissingInAction,
+        Left,
+        Transit
     }
 }

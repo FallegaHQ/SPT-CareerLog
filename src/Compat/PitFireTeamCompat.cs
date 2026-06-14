@@ -6,8 +6,8 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Compat;
 
 /// <summary>
-/// PiT Fireteam clones the menu Character button for squad UI. Career Log's layout fade must not
-/// attach <see cref="CanvasGroup"/> to that template or clones inherit non-interactable state.
+///     PiT Fireteam clones the menu Character button for squad UI. Career Log's layout fade must not
+///     attach <see cref="CanvasGroup" /> to that template or clones inherit non-interactable state.
 /// </summary>
 internal static class PitFireTeamCompat{
     private const string PluginGuid = "xyz.pit.fireteam";
@@ -41,7 +41,9 @@ internal static class PitFireTeamCompat{
 
         if(addTeammate) RepairButtonHierarchy(addTeammate);
 
-        CareerLogPlugin.Log?.LogDebug(PluginInfo.Format("PiT Fireteam squad overlay buttons repaired for interaction."));
+        CareerLogPlugin.Log?.LogDebug(
+                                      PluginInfo.Format("PiT Fireteam squad overlay buttons repaired for interaction.")
+                                     );
     }
 
     private static void RepairButtonHierarchy(Transform root){

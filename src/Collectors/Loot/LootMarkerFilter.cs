@@ -1,7 +1,7 @@
-using EFT.InventoryLogic;
-using Softwyx.CareerLog.Config;
 using System;
 using System.Collections.Generic;
+using EFT.InventoryLogic;
+using Softwyx.CareerLog.Config;
 
 namespace Softwyx.CareerLog.Collectors.Loot;
 

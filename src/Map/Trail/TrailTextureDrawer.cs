@@ -1,7 +1,7 @@
-using Softwyx.CareerLog.Map.Data;
-using Softwyx.CareerLog.Ui.Design;
 using System;
 using System.Collections.Generic;
+using Softwyx.CareerLog.Map.Data;
+using Softwyx.CareerLog.Ui.Design;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Map.Trail;

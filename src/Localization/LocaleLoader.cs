@@ -5,7 +5,7 @@ using System.Linq;
 namespace Softwyx.CareerLog.Localization;
 
 /// <summary>
-/// Validates all locale JSON packs, keeps a catalogue of valid entries, then merges them into the game locale manager.
+///     Validates all locale JSON packs, keeps a catalogue of valid entries, then merges them into the game locale manager.
 /// </summary>
 internal static class LocaleLoader{
     private static readonly List<string> AppliedToGame = [];
@@ -14,7 +14,7 @@ internal static class LocaleLoader{
     private static bool IsInitialized => _catalogue.Count > 0;
 
     /// <summary>
-    /// Discovers every locale file, validates each, keeps only valid packs, then applies them to the game.
+    ///     Discovers every locale file, validates each, keeps only valid packs, then applies them to the game.
     /// </summary>
     /// <param name="error"></param>
     /// <returns></returns>

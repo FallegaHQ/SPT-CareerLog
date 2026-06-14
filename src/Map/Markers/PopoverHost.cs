@@ -13,17 +13,19 @@ internal sealed class PopoverHost : MonoBehaviour{
     private const float PopoverMinWidth = 180f;
     private const float PopoverMaxWidth = 280f;
 
-    private static readonly Vector2 DefaultPopoverSize = new(PopoverMinWidth, 48f);
+    private static readonly Vector2           DefaultPopoverSize = new(PopoverMinWidth, 48f);
+    private                 RectTransform     _activeMarker;
+    private                 TextMeshProUGUI   _bodyText;
+    private                 TMP_FontAsset     _labelFont;
+    private                 PopoverPanelHover _panelHover;
+    private                 RectTransform     _popover;
+    private                 RectTransform     _presentationRoot;
+    private                 TextMeshProUGUI   _titleText;
+    private                 VictimOverlay     _victimOverlay;
 
-    private RectTransform   _viewport;
-    private RectTransform   _presentationRoot;
-    private RectTransform   _popover;
-    private TextMeshProUGUI _titleText;
-    private TextMeshProUGUI _bodyText;
-    private TMP_FontAsset   _labelFont;
-    private RectTransform      _activeMarker;
-    private VictimOverlay      _victimOverlay;
-    private PopoverPanelHover  _panelHover;
+    private RectTransform _viewport;
+
+    private RectTransform PlacementRoot => _presentationRoot ? _presentationRoot : _viewport;
 
     private void Awake(){
         _viewport = transform as RectTransform;
@@ -95,8 +97,6 @@ internal sealed class PopoverHost : MonoBehaviour{
         else
             _victimOverlay?.Hide();
     }
-
-    private RectTransform PlacementRoot => _presentationRoot ? _presentationRoot : _viewport;
 
     private void EnsurePopoverBuilt(){
         if(!_viewport) _viewport = transform as RectTransform;

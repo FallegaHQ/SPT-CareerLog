@@ -6,15 +6,6 @@ namespace Softwyx.CareerLog.Ui.Shared;
 
 /// <summary>Groups session counter keys for UI (aligned with vanilla post-raid stat sections).</summary>
 internal static class SessionCounterCategory{
-    internal enum Category{
-        Combat,
-        Health,
-        Loot,
-        Experience,
-        Daily,
-        Other
-    }
-
     private static readonly Dictionary<string, Category> ByKey = BuildMap();
 
     public static Category For(string counterKey){
@@ -154,5 +145,14 @@ internal static class SessionCounterCategory{
         void Add(Category category, params string[] keys){
             foreach(var key in keys) map[key] = category;
         }
+    }
+
+    internal enum Category{
+        Combat,
+        Health,
+        Loot,
+        Experience,
+        Daily,
+        Other
     }
 }

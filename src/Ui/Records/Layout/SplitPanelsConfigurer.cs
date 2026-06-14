@@ -1,3 +1,4 @@
+using System;
 using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Ui.Design;
 using UnityEngine;
@@ -38,7 +39,7 @@ internal static class SplitPanelsConfigurer{
         rect.offsetMin = new Vector2(leftInset,  bottom);
         rect.offsetMax = new Vector2(rightInset, top);
 
-        if(string.Equals(panelName, UiHierarchy.RecordsScreen.RightPanel, System.StringComparison.Ordinal))
+        if(string.Equals(panelName, UiHierarchy.RecordsScreen.RightPanel, StringComparison.Ordinal))
             EnsurePanelClipping(panel);
 
         panel.gameObject.SetActive(true);

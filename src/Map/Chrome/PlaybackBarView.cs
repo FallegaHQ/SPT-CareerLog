@@ -3,6 +3,7 @@ using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Shared;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Softwyx.CareerLog.Map.Chrome;
@@ -15,12 +16,16 @@ internal sealed class PlaybackBarView : MonoBehaviour{
     private const float ControlBtnSize = 28f;
 
     private RaidPlaybackController _playback;
-    private TextMeshProUGUI        _timeLabel;
+    private Button                 _playButton;
     private TextMeshProUGUI        _playLabel;
     private Slider                 _scrubber;
-    private Button                 _playButton;
     private Button[]               _speedButtons;
     private bool                   _syncingScrubber;
+    private TextMeshProUGUI        _timeLabel;
+
+    private void OnDestroy(){
+        if(_playback != null) _playback.StateChanged -= OnStateChanged;
+    }
 
     public static PlaybackBarView Ensure(RectTransform parent, TMP_FontAsset font){
         var existing = parent.Find("MapPlaybackBar")?.
@@ -58,10 +63,6 @@ internal sealed class PlaybackBarView : MonoBehaviour{
         if(_playback) _playback.StateChanged += OnStateChanged;
 
         Refresh();
-    }
-
-    private void OnDestroy(){
-        if(_playback != null) _playback.StateChanged -= OnStateChanged;
     }
 
     private void Build(RectTransform root, TMP_FontAsset font){
@@ -247,9 +248,7 @@ internal sealed class PlaybackBarView : MonoBehaviour{
         return label;
     }
 
-    private static Button CreateIconButton(
-        Transform parent, string label, float size, UnityEngine.Events.UnityAction onClick
-    ){
+    private static Button CreateIconButton(Transform parent, string label, float size, UnityAction onClick){
         var button = CreateTextButton(parent, label, size, onClick);
         var text   = button.GetComponentInChildren<TextMeshProUGUI>();
         text.fontSize = label.Length > 1 ? 13f : 16f;
@@ -258,9 +257,7 @@ internal sealed class PlaybackBarView : MonoBehaviour{
         return button;
     }
 
-    private static Button CreateTextButton(
-        Transform parent, string label, float width, UnityEngine.Events.UnityAction onClick
-    ){
+    private static Button CreateTextButton(Transform parent, string label, float width, UnityAction onClick){
         var go = new GameObject("Button", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
         go.transform.SetParent(parent, false);
 

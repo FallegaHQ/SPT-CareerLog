@@ -1,6 +1,8 @@
-namespace Softwyx.CareerLog.Ui.Records.Financial;
+using System;
+using System.Globalization;
+using Softwyx.CareerLog.Ui.Design;
 
-using Design;
+namespace Softwyx.CareerLog.Ui.Records.Financial;
 
 internal static class ValueFormatter{
     public static string Rubles(long value){
@@ -24,12 +26,7 @@ internal static class ValueFormatter{
     }
 
     public static string LocalTime(string utc){
-        if(!System.DateTime.TryParse(
-                                     utc,
-                                     System.Globalization.CultureInfo.InvariantCulture,
-                                     System.Globalization.DateTimeStyles.RoundtripKind,
-                                     out var parsed
-                                    ))
+        if(!DateTime.TryParse(utc, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var parsed))
             return utc;
 
         return parsed.ToLocalTime().

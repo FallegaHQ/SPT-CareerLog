@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT.Quests;
 using Softwyx.CareerLog.Collectors.Meta;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Reflection;
 
 namespace Softwyx.CareerLog.Patches;
 

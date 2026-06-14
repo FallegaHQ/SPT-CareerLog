@@ -1,10 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT.InventoryLogic;
 using Softwyx.CareerLog.Collectors.Loot;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 
 namespace Softwyx.CareerLog.Patches;
 

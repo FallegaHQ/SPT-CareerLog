@@ -1,30 +1,25 @@
-using EFT.InventoryLogic;
-using Softwyx.CareerLog.Persistence.Models;
 using System;
 using System.Collections.Generic;
+using EFT.InventoryLogic;
+using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Collectors.Loot;
 
 internal static class LootMarkerCollector{
     /// <summary>
-    /// Loot ledger -- instance ids first picked up during this raid (excludes bring-in gear).
+    ///     Loot ledger -- instance ids first picked up during this raid (excludes bring-in gear).
     /// </summary>
     private static readonly HashSet<string> CountedItems = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
-    /// Value/template facts for ledger ids only.
+    ///     Value/template facts for ledger ids only.
     /// </summary>
     private static readonly Dictionary<string, LootFact> FactsByItemId = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
-    /// Current ownership -- updated by inventory add/remove events and <see cref="LootExtractInventoryReconcile"/>.
+    ///     Current ownership -- updated by inventory add/remove events and <see cref="LootExtractInventoryReconcile" />.
     /// </summary>
     private static readonly HashSet<string> OwnedItemIds = new(StringComparer.OrdinalIgnoreCase);
-
-    private sealed class LootFact{
-        public string TemplateId;
-        public long   ValueRub;
-    }
 
     public static void Clear(){
         CountedItems.Clear();
@@ -57,8 +52,8 @@ internal static class LootMarkerCollector{
     }
 
     /// <summary>
-    /// First-time loot registration only. Re-pickups after a drop return false but leave ownership to
-    /// <see cref="TrackOwned"/> / inventory events. Bring-in gear is never registered.
+    ///     First-time loot registration only. Re-pickups after a drop return false but leave ownership to
+    ///     <see cref="TrackOwned" /> / inventory events. Bring-in gear is never registered.
     /// </summary>
     private static bool TryRegisterNewLoot(Item item, out long valueRub){
         valueRub = 0L;
@@ -294,8 +289,8 @@ internal static class LootMarkerCollector{
     }
 
     /// <summary>
-    /// At extract, keep only loot-ledger items still on the player (covers dead-body transfers and other
-    /// paths that never fire inventory remove events). Bring-in gear is not in the ledger and is unaffected.
+    ///     At extract, keep only loot-ledger items still on the player (covers dead-body transfers and other
+    ///     paths that never fire inventory remove events). Bring-in gear is not in the ledger and is unaffected.
     /// </summary>
     public static void SyncOwnedFromInventory(HashSet<string> inventoryItemIds){
         OwnedItemIds.Clear();
@@ -362,5 +357,10 @@ internal static class LootMarkerCollector{
         }
 
         return false;
+    }
+
+    private sealed class LootFact{
+        public string TemplateId;
+        public long   ValueRub;
     }
 }

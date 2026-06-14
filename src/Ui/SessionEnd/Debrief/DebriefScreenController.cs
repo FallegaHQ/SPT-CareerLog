@@ -1,17 +1,16 @@
 using EFT.UI.Screens;
 using Softwyx.CareerLog.Infrastructure;
+using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Ui.SessionEnd.Debrief;
 
-internal sealed class DebriefScreenController(
-    LocationSettingsClass.Location location,
-    Persistence.Models.RaidRecord  raidRecord
-) : DebriefScreenControllerBase{
+internal sealed class DebriefScreenController(LocationSettingsClass.Location location, RaidRecord raidRecord)
+    : DebriefScreenControllerBase{
     public LocationSettingsClass.Location Location{
         get;
     } = location;
 
-    public Persistence.Models.RaidRecord RaidRecord{
+    public RaidRecord RaidRecord{
         get;
     } = raidRecord;
 

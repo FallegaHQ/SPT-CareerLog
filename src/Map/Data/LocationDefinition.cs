@@ -1,44 +1,50 @@
 using System.Collections.Generic;
 
+// ReSharper disable All
+// Rider's suggestions are sometimes distructive! Be carefult!
+
 namespace Softwyx.CareerLog.Map.Data;
 
-internal sealed class LocationDefinition(
-    string svgFile,
-    float  coordinateRotation,
-    float  boundsMinX,
-    float  boundsMinY,
-    float  boundsMaxX,
-    float  boundsMaxY
-){
+internal sealed class LocationDefinition{
     public List<string> LocationIds{
         get;
+        set;
     } = [];
 
-    private string SvgFile{
+    public string SvgFile{
         get;
-    } = svgFile;
+        set;
+    }
 
     public float CoordinateRotation{
         get;
-    } = coordinateRotation;
+        set;
+    }
 
-    public static float TrailOverlayRotation => 180f;
+    public float TrailOverlayRotation{
+        get;
+        set;
+    } = 180f;
 
     public float BoundsMinX{
         get;
-    } = boundsMinX;
+        set;
+    }
 
     public float BoundsMinY{
         get;
-    } = boundsMinY;
+        set;
+    }
 
     public float BoundsMaxX{
         get;
-    } = boundsMaxX;
+        set;
+    }
 
     public float BoundsMaxY{
         get;
-    } = boundsMaxY;
+        set;
+    }
 
     public string SvgPath => PluginPaths.MapDisplaySvgFile(SvgFile);
 }

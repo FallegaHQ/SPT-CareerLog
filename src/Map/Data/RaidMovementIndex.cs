@@ -1,15 +1,15 @@
+using System.Collections.Generic;
 using Softwyx.CareerLog.Map.Markers;
 using Softwyx.CareerLog.Persistence.Models;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Map.Data;
 
-/// <summary>Single-pass view of <see cref="RaidMovement.Values"/> for map trail + markers.</summary>
+/// <summary>Single-pass view of <see cref="RaidMovement.Values" /> for map trail + markers.</summary>
 internal sealed class RaidMovementIndex{
+    private readonly List<RaidMovementValue> _markers     = [];
     private readonly List<Vector2>           _trailPoints = [];
     private readonly List<float>             _trailTimes  = [];
-    private readonly List<RaidMovementValue> _markers     = [];
     private          float                   _recordedDurationSec;
 
     public  IReadOnlyList<Vector2> TrailPoints      => _trailPoints;

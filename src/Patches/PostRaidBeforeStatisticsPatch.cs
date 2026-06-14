@@ -1,14 +1,14 @@
-using Softwyx.CareerLog.Config;
-using Softwyx.CareerLog.Ui.SessionEnd;
-using SPT.Reflection.Patching;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Interop;
+using Softwyx.CareerLog.Ui.SessionEnd;
+using SPT.Reflection.Patching;
 
 namespace Softwyx.CareerLog.Patches;
 
 /// <summary>
-/// After kill list: optional vanilla statistics screen, or skip straight to XP when disabled.
+///     After kill list: optional vanilla statistics screen, or skip straight to XP when disabled.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class PostRaidBeforeStatisticsPatch : ModulePatch{

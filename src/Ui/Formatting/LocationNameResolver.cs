@@ -1,5 +1,6 @@
-using Softwyx.CareerLog.Localization;
+using System;
 using Softwyx.CareerLog.Interop;
+using Softwyx.CareerLog.Localization;
 
 namespace Softwyx.CareerLog.Ui.Formatting;
 
@@ -16,6 +17,6 @@ internal static class LocationNameResolver{
         var modKey = LocaleKeys.Location(locationId);
         var mod    = LocaleLoader.Format(modKey);
 
-        return string.Equals(mod, modKey, System.StringComparison.Ordinal) ? locationId : mod;
+        return string.Equals(mod, modKey, StringComparison.Ordinal) ? locationId : mod;
     }
 }

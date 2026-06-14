@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT.UI;
+using HarmonyLib;
 using Softwyx.CareerLog.Ui.Records.Menu;
 using SPT.Reflection.Patching;
-using System.Reflection;
-using HarmonyLib;
 
 namespace Softwyx.CareerLog.Patches;
 

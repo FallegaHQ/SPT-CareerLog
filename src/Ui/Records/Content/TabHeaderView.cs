@@ -4,6 +4,7 @@ using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Shared;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Softwyx.CareerLog.Ui.Records.Content;
@@ -13,8 +14,8 @@ internal static class TabHeaderView{
     private const float BackButtonHeight = Spacing.BackButtonSize;
 
     public static void Apply(
-        Transform                      hostRoot, string titleKey, TextMeshProUGUI styleSource, bool showBack,
-        UnityEngine.Events.UnityAction onBack,   bool showMapButton = false, UnityEngine.Events.UnityAction onMap = null
+        Transform hostRoot, string titleKey, TextMeshProUGUI styleSource, bool showBack, UnityAction onBack,
+        bool      showMapButton = false, UnityAction onMap = null
     ){
         if(!hostRoot) return;
 
@@ -68,7 +69,7 @@ internal static class TabHeaderView{
         if(!header.Find(UiHierarchy.TabHost.MapButton)) CreateMapButton(header, styleSource);
     }
 
-    private static void WireBackButton(Transform backButton, UnityEngine.Events.UnityAction onBack){
+    private static void WireBackButton(Transform backButton, UnityAction onBack){
         var btn = backButton.GetComponent<Button>();
 
         if(!btn) return;
@@ -79,7 +80,7 @@ internal static class TabHeaderView{
         if(onBack != null) btn.onClick.AddListener(onBack);
     }
 
-    private static void WireMapButton(Transform mapButton, UnityEngine.Events.UnityAction onMap){
+    private static void WireMapButton(Transform mapButton, UnityAction onMap){
         var btn = mapButton.GetComponent<Button>();
 
         if(!btn) return;

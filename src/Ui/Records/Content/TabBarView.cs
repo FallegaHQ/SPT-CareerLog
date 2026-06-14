@@ -10,15 +10,15 @@ using UnityEngine.UI;
 namespace Softwyx.CareerLog.Ui.Records.Content;
 
 internal sealed class TabBarView{
-    private readonly Transform         _tabBarRoot;
-    private readonly Action<Tab>       _onTabSelected;
-    private          Button[]          _tabButtons;
-    private          TextMeshProUGUI[] _tabLabels;
+    private readonly Action<Tab> _onTabSelected;
+    private readonly Transform   _tabBarRoot;
     private readonly string[] _tabLabelKeys =[
                                                  LocaleKeys.TabSummary,
                                                  LocaleKeys.TabFinancial,
                                                  LocaleKeys.TabRaids
                                              ];
+    private Button[]          _tabButtons;
+    private TextMeshProUGUI[] _tabLabels;
 
     internal TabBarView(Transform tabBarRoot, Action<Tab> onTabSelected){
         _tabBarRoot    = tabBarRoot;

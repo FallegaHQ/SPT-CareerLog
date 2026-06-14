@@ -4,12 +4,19 @@ using Softwyx.CareerLog.Collectors;
 using Softwyx.CareerLog.Collectors.Health;
 using Softwyx.CareerLog.Collectors.Loot;
 using Softwyx.CareerLog.Collectors.Movement;
+using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Persistence;
 using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Session;
 
 internal static class CareerLogSession{
+    private static string   _raidId;
+    private static string   _storageProfileId;
+    private static string   _locationId;
+    private static DateTime _startedUtc;
+    private static bool     _ended;
+    private static Player   _localPlayer;
     private static bool Active{
         get;
         set;
@@ -22,15 +29,8 @@ internal static class CareerLogSession{
         private set;
     }
 
-    private static string   _raidId;
-    private static string   _storageProfileId;
-    private static string   _locationId;
-    private static DateTime _startedUtc;
-    private static bool     _ended;
-    private static Player   _localPlayer;
-
     public static void OnRaidStarted(GameWorld world){
-        if(!Config.Settings.Enabled.Value) return;
+        if(!Settings.Enabled.Value) return;
 
         Reset();
 
@@ -89,7 +89,7 @@ internal static class CareerLogSession{
     public static void OnRaidEnded(
         Profile profile, Player player, ExitStatus exitStatus, float pastTime, string locationId
     ){
-        if(!Config.Settings.Enabled.Value || _ended) return;
+        if(!Settings.Enabled.Value || _ended) return;
 
         if(!Active){
             CareerLogPlugin.Log?.LogDebug(PluginInfo.Format("Raid end ignored -- no active session."));

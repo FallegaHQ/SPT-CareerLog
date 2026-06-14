@@ -1,3 +1,4 @@
+using System.IO;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Map.Chrome;
 using Softwyx.CareerLog.Map.Data;
@@ -12,27 +13,33 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Map;
 
 internal sealed class PanelView : MonoBehaviour{
-    private const string HostName = "RaidMapHost";
+    private const string             HostName = "RaidMapHost";
+    private       RaidRecord         _activeRecord;
+    private       ChromeHost         _chrome;
+    private       LocationDefinition _definition;
+    private       TextMeshProUGUI    _fallbackLabel;
 
     private HierarchyBuilder       _hierarchy;
-    private TrailPresenter         _trailPresenter;
-    private ScreenOverlay          _markerOverlay;
-    private TrailZoomSync          _trailZoomSync;
-    private PopoverHost            _popoverHost;
-    private VictimOverlay          _victimOverlay;
-    private RaidPlaybackController _playback;
-    private ChromeHost             _chrome;
-    private RaidMovementIndex      _movementIndex;
-    private LocationDefinition     _definition;
-    private RaidRecord             _activeRecord;
     private TMP_FontAsset          _labelFont;
-    private TextMeshProUGUI        _fallbackLabel;
+    private ScreenOverlay          _markerOverlay;
+    private RaidMovementIndex      _movementIndex;
+    private RaidPlaybackController _playback;
+    private PopoverHost            _popoverHost;
+    private TrailPresenter         _trailPresenter;
+    private TrailZoomSync          _trailZoomSync;
+    private VictimOverlay          _victimOverlay;
 
     private void Awake(){
         _trailPresenter ??= new TrailPresenter(this);
         _markerOverlay  ??= GetComponent<ScreenOverlay>()          ?? gameObject.AddComponent<ScreenOverlay>();
         _trailZoomSync  ??= GetComponent<TrailZoomSync>()          ?? gameObject.AddComponent<TrailZoomSync>();
         _playback       ??= GetComponent<RaidPlaybackController>() ?? gameObject.AddComponent<RaidPlaybackController>();
+    }
+
+    private void OnDestroy(){
+        _trailPresenter?.Stop();
+
+        if(_hierarchy?.TrailTexture) Destroy(_hierarchy.TrailTexture);
     }
 
     public static PanelView Ensure(Transform viewport){
@@ -83,7 +90,7 @@ internal sealed class PanelView : MonoBehaviour{
         _movementIndex = RaidMovementIndex.Build(record?.Movement, record?.DurationSeconds ?? 0f);
         _definition    = LocationRegistry.TryGet(record?.LocationId, out var def) ? def : null;
 
-        if(_definition == null || !System.IO.File.Exists(_definition.SvgPath)){
+        if(_definition == null || !File.Exists(_definition.SvgPath)){
             ShowFallback(LocaleLoader.Format(LocaleKeys.MapUnavailable));
 
             return;
@@ -234,11 +241,5 @@ internal sealed class PanelView : MonoBehaviour{
         _definition    = null;
         _activeRecord  = null;
         _fallbackLabel = null;
-    }
-
-    private void OnDestroy(){
-        _trailPresenter?.Stop();
-
-        if(_hierarchy?.TrailTexture) Destroy(_hierarchy.TrailTexture);
     }
 }

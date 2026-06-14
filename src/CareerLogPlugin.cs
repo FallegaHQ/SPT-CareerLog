@@ -1,3 +1,4 @@
+using System;
 using BepInEx;
 using BepInEx.Logging;
 using Softwyx.CareerLog.Config;
@@ -63,7 +64,7 @@ public class CareerLogPlugin : BaseUnityPlugin{
             Log.LogInfo(PluginInfo.Format($"{name} enabled."));
         }
 
-        catch(System.Exception ex){
+        catch(Exception ex){
             Log.LogError(PluginInfo.Format($"{name} failed: {ex}"));
         }
     }

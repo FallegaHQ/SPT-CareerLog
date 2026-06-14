@@ -4,8 +4,8 @@ using Newtonsoft.Json;
 namespace Softwyx.CareerLog.Persistence.Models;
 
 /// <summary>
-/// One map-space sample on the raid timeline -- a trail point and/or a typed marker
-/// (<see cref="RaidMarkerTypes"/>).
+///     One map-space sample on the raid timeline -- a trail point and/or a typed marker
+///     (<see cref="RaidMarkerTypes" />).
 /// </summary>
 internal sealed class RaidMovementValue{
     /// <summary>Map-space position as <c>[x, z]</c>.</summary>

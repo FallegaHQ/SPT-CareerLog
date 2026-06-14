@@ -1,16 +1,16 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT;
 using EFT.UI;
+using HarmonyLib;
 using Softwyx.CareerLog.Ui.Records.Menu;
 using SPT.Reflection.Patching;
-using System.Reflection;
-using HarmonyLib;
 
 namespace Softwyx.CareerLog.Patches;
 
 /// <summary>
-/// Primary hook -- same Show overload used by SPT-Menu-Overhaul. Deferred layout runs after other
-/// menu Show postfixes (including Menu Overhaul) finish repositioning buttons.
+///     Primary hook -- same Show overload used by SPT-Menu-Overhaul. Deferred layout runs after other
+///     menu Show postfixes (including Menu Overhaul) finish repositioning buttons.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class MenuScreenShowLegacyPatch : ModulePatch{

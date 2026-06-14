@@ -4,7 +4,7 @@ using Softwyx.CareerLog.Persistence.Models;
 namespace Softwyx.CareerLog.Session;
 
 /// <summary>
-/// One PMC profile id for the entire game process (set when the client profile loads; never changes until exit).
+///     One PMC profile id for the entire game process (set when the client profile loads; never changes until exit).
 /// </summary>
 internal static class RaidProfileAttribution{
     private static string SessionPmcProfileId{
@@ -15,8 +15,8 @@ internal static class RaidProfileAttribution{
     private static bool IsSessionBound => !string.IsNullOrEmpty(SessionPmcProfileId);
 
     /// <summary>
-    /// Binds the session PMC id from a non-scav profile (menu load, first PMC raid, etc.).
-    /// Ignored after first bind.
+    ///     Binds the session PMC id from a non-scav profile (menu load, first PMC raid, etc.).
+    ///     Ignored after first bind.
     /// </summary>
     public static void BindSessionProfile(Profile profile){
         if(profile == null || IsScavProfile(profile) || IsSessionBound) return;

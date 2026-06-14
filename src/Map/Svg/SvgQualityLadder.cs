@@ -14,29 +14,6 @@ internal static class SvgQualityLadder{
     private const int   GradientResolution = 32;
     private const bool  FlipVerticalAxis   = true;
 
-    private readonly struct Tier{
-        private readonly float _stepDistance;
-        private readonly float _maxCordDeviation;
-        private readonly float _maxTanAngleDeviation;
-        private readonly float _samplingStepSize;
-
-        internal Tier(float step, float cord, float angle, float sample){
-            _stepDistance         = step;
-            _maxCordDeviation     = cord;
-            _maxTanAngleDeviation = angle;
-            _samplingStepSize     = sample;
-        }
-
-        internal VectorUtils.TessellationOptions ToOptions(){
-            return new VectorUtils.TessellationOptions{
-                                                          StepDistance         = _stepDistance,
-                                                          MaxCordDeviation     = _maxCordDeviation,
-                                                          MaxTanAngleDeviation = _maxTanAngleDeviation,
-                                                          SamplingStepSize     = _samplingStepSize
-                                                      };
-        }
-    }
-
     // Fine → coarse; tuned for debrief ground-layer SVGs (not shared with other mods).
     private static readonly Tier[] Tiers =[
                                               // UHQ
@@ -105,5 +82,28 @@ internal static class SvgQualityLadder{
         }
 
         return total;
+    }
+
+    private readonly struct Tier{
+        private readonly float _stepDistance;
+        private readonly float _maxCordDeviation;
+        private readonly float _maxTanAngleDeviation;
+        private readonly float _samplingStepSize;
+
+        internal Tier(float step, float cord, float angle, float sample){
+            _stepDistance         = step;
+            _maxCordDeviation     = cord;
+            _maxTanAngleDeviation = angle;
+            _samplingStepSize     = sample;
+        }
+
+        internal VectorUtils.TessellationOptions ToOptions(){
+            return new VectorUtils.TessellationOptions{
+                                                          StepDistance         = _stepDistance,
+                                                          MaxCordDeviation     = _maxCordDeviation,
+                                                          MaxTanAngleDeviation = _maxTanAngleDeviation,
+                                                          SamplingStepSize     = _samplingStepSize
+                                                      };
+        }
     }
 }

@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT;
 using EFT.HealthSystem;
 using Softwyx.CareerLog.Collectors;
@@ -5,9 +8,6 @@ using Softwyx.CareerLog.Collectors.Combat;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 
 namespace Softwyx.CareerLog.Patches;
 

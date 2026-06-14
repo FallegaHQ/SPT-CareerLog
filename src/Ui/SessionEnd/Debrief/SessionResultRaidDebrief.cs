@@ -1,8 +1,8 @@
 using Comfort.Common;
 using EFT.InputSystem;
 using EFT.UI;
-using EFT.UI.SessionEnd;
 using EFT.UI.Screens;
+using EFT.UI.SessionEnd;
 using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence.Models;
@@ -18,6 +18,11 @@ internal sealed class SessionResultCareerLog : EftScreen<DebriefScreenController
     private StatisticsSpawn _statsSpawn;
     private TextMeshProUGUI _locationName;
     private Transform       _scrollContent;
+
+    private void Awake(){
+        _nextButton.OnClick.AddListener(OnNextClicked);
+        _backButton.OnClick.AddListener(OnBackClicked);
+    }
 
     internal static SessionResultCareerLog CreateFromTemplate(SessionResultStatistics template){
         if(!template) return null;
@@ -56,11 +61,6 @@ internal sealed class SessionResultCareerLog : EftScreen<DebriefScreenController
                                                              )
                                            );
         }
-    }
-
-    private void Awake(){
-        _nextButton.OnClick.AddListener(OnNextClicked);
-        _backButton.OnClick.AddListener(OnBackClicked);
     }
 
     public override void Show(DebriefScreenController controller){

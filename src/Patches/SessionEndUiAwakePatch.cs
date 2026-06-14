@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using EFT.UI.SessionEnd;
+using HarmonyLib;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Ui.SessionEnd;
 using SPT.Reflection.Patching;
-using HarmonyLib;
 
 namespace Softwyx.CareerLog.Patches;
 

@@ -1,13 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Reflection;
 
 namespace Softwyx.CareerLog.Patches;
 
 /// <summary>
-/// Postfix on <see cref="Player.OnGameSessionEnd"/> -- snapshot session counters and persist raid JSON.
+///     Postfix on <see cref="Player.OnGameSessionEnd" /> -- snapshot session counters and persist raid JSON.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class PlayerRaidEndPatch : ModulePatch{

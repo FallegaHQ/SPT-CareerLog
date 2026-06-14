@@ -5,6 +5,7 @@ using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Interop;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Softwyx.CareerLog.Ui.Records.PlayerModel;
 
@@ -59,7 +60,7 @@ internal static class CharacterModelDragBinder{
         drag.transform.SetAsLastSibling();
         drag.gameObject.SetActive(true);
 
-        var graphic = drag.GetComponent<UnityEngine.UI.Graphic>();
+        var graphic = drag.GetComponent<Graphic>();
 
         if(graphic) graphic.raycastTarget = true;
     }

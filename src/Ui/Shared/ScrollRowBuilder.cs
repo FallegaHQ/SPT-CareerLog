@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Softwyx.CareerLog.Ui.Shared;
 
-/// <summary>Scroll body lines and stat rows. Used only via <see cref="ScrollContentBuilder"/>.</summary>
+/// <summary>Scroll body lines and stat rows. Used only via <see cref="ScrollContentBuilder" />.</summary>
 internal static class ScrollRowBuilder{
     internal static void AddSubHeader(Transform items, string line, ScrollContentBuilder.ScrollTextStyle style){
         if(!items || string.IsNullOrEmpty(line)) return;
@@ -161,14 +161,7 @@ internal static class ScrollRowBuilder{
         bodyElement.flexibleWidth = 1f;
 
         var text = bodyObject.AddComponent<TextMeshProUGUI>();
-        ConfigureText(
-                      text,
-                      body,
-                      Typography.Body,
-                      style.CaptionColor,
-                      style.Font,
-                      TextAlignmentOptions.TopLeft
-                     );
+        ConfigureText(text, body, Typography.Body, style.CaptionColor, style.Font, TextAlignmentOptions.TopLeft);
         text.enableWordWrapping = true;
     }
 

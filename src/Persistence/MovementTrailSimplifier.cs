@@ -1,5 +1,5 @@
-using Softwyx.CareerLog.Persistence.Models;
 using System.Collections.Generic;
+using Softwyx.CareerLog.Persistence.Models;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Persistence;

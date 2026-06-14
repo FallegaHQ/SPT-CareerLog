@@ -1,10 +1,10 @@
+using System;
+using System.Collections.Generic;
 using EFT;
 using EFT.InventoryLogic;
 using Softwyx.CareerLog.Collectors.Loot;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence.Models;
-using System;
-using System.Collections.Generic;
 
 namespace Softwyx.CareerLog.Collectors.Stash;
 
@@ -138,10 +138,10 @@ internal static class WorthCalculator{
     }
 
     private sealed class ValuationEntry{
-        public string TemplateId;
-        public string Name;
-        public long   ValueRub;
         public int    Count = 1;
+        public string Name;
+        public string TemplateId;
+        public long   ValueRub;
 
         public static ValuationEntry FromItem(Item item, long valueRub){
             var templateId = item?.TemplateId.ToString();

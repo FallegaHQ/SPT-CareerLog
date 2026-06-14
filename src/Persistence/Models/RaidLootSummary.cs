@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+
 namespace Softwyx.CareerLog.Persistence.Models;
 
 /// <summary>Raid loot aggregates.</summary>
 internal sealed class RaidLootSummary{
-    public System.Collections.Generic.List<RaidLootItemEntry> TopLooted{
+    public List<RaidLootItemEntry> TopLooted{
         get;
         set;
     } = [];

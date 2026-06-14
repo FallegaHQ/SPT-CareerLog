@@ -1,5 +1,6 @@
 using EFT;
 using EFT.UI;
+using Softwyx.CareerLog.Collectors.Stash;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 
@@ -28,7 +29,7 @@ internal static class MenuBootstrap{
 
         RaidProfileAttribution.BindSessionProfile(profile);
 
-        if(Settings.StashSnapshotOnMenuOpen.Value) Collectors.Stash.SnapshotCollector.TryCaptureFromMenu(profile);
+        if(Settings.StashSnapshotOnMenuOpen.Value) SnapshotCollector.TryCaptureFromMenu(profile);
 
         if(!ShouldRunRecordsUi()) return;
 

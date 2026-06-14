@@ -45,7 +45,7 @@ internal static class LocaleFileStore{
     }
 
     /// <summary>
-    /// Loads <c>locales/{localeId}.json</c> only.
+    ///     Loads <c>locales/{localeId}.json</c> only.
     /// </summary>
     /// <param name="localeId"></param>
     /// <param name="entries"></param>

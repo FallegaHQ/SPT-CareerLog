@@ -1,8 +1,9 @@
+using System;
+using System.Text;
+using Softwyx.CareerLog.Collectors.Health;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Ui.Formatting;
-using System;
-using System.Text;
 
 namespace Softwyx.CareerLog.Map.Markers;
 
@@ -195,7 +196,7 @@ internal static class DetailText{
     }
 
     private static string BuildHealingBody(RaidMovementValue marker, string timeLabel){
-        var kindKey = marker.HealKind == Collectors.Health.HealingMarkerCollector.KindSurgery
+        var kindKey = marker.HealKind == HealingMarkerCollector.KindSurgery
                           ? LocaleKeys.MapMarkerHealingSurgery
                           : LocaleKeys.MapMarkerHealingLarge;
 

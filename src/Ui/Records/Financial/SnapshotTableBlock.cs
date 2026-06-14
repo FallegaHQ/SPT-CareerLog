@@ -1,8 +1,8 @@
+using System;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Shared;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 

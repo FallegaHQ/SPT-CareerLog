@@ -1,3 +1,4 @@
+using System;
 using EFT;
 using EFT.InventoryLogic;
 using EFT.UI;
@@ -5,7 +6,7 @@ using Softwyx.CareerLog.Infrastructure;
 
 namespace Softwyx.CareerLog.Interop;
 
-/// <summary>Menu <see cref="InventoryController"/> from <see cref="ItemUiContext"/> (initialized at preloader).</summary>
+/// <summary>Menu <see cref="InventoryController" /> from <see cref="ItemUiContext" /> (initialized at preloader).</summary>
 internal static class ItemUiContextAccess{
     public static InventoryController GetInventoryController(){
         var context = ItemUiContext.Instance;
@@ -23,8 +24,8 @@ internal static class ItemUiContextAccess{
         if(controller?.Profile == null || profile == null) return false;
 
         if(controller.Profile is Profile boundProfile)
-            return string.Equals(boundProfile.ProfileId, profile.ProfileId, System.StringComparison.Ordinal);
+            return string.Equals(boundProfile.ProfileId, profile.ProfileId, StringComparison.Ordinal);
 
-        return string.Equals(controller.Profile.ProfileId, profile.ProfileId, System.StringComparison.Ordinal);
+        return string.Equals(controller.Profile.ProfileId, profile.ProfileId, StringComparison.Ordinal);
     }
 }

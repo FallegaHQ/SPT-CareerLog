@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using EFT;
 using EFT.UI;
@@ -7,12 +8,13 @@ using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace Softwyx.CareerLog.Ui.Records.PlayerModel;
 
 /// <summary>
-/// Clones the inventory <see cref="InventoryPlayerModelWithStatsWindow"/> host (character tab) into
-/// <c>PlayerModelSlot</c> so drag rotation, weapons and bottom-field stats match vanilla behavior.
+///     Clones the inventory <see cref="InventoryPlayerModelWithStatsWindow" /> host (character tab) into
+///     <c>PlayerModelSlot</c> so drag rotation, weapons and bottom-field stats match vanilla behavior.
 /// </summary>
 internal static class CharacterModelPresenter{
     private static InventoryPlayerModelWithStatsWindow _statsWindow;
@@ -129,7 +131,7 @@ internal static class CharacterModelPresenter{
     private static IEnumerator ShowRoutine(Profile profile){
         if(!_statsWindow || !_modelView || profile == null) yield break;
 
-        if(string.Equals(_shownProfileId, profile.ProfileId, System.StringComparison.Ordinal)
+        if(string.Equals(_shownProfileId, profile.ProfileId, StringComparison.Ordinal)
         && _cloneRoot.gameObject.activeSelf
         && _modelView.LoadingComplete)
             yield break;
@@ -152,7 +154,7 @@ internal static class CharacterModelPresenter{
         try{
             _statsWindow.Show(profile, controller, true);
         }
-        catch(System.Exception ex){
+        catch(Exception ex){
             CareerLogPlugin.Log?.LogWarning(PluginInfo.Format($"Records player model Show failed: {ex}"));
 
             yield break;

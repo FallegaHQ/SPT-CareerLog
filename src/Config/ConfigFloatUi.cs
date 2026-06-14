@@ -1,7 +1,7 @@
-using BepInEx.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using BepInEx.Configuration;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Config;
@@ -10,11 +10,6 @@ internal static class ConfigFloatUi{
     private const           int                              DefaultDecimals = 2;
     private const           float                            LabelWidth      = 56f;
     private static readonly Dictionary<int, FloatFieldState> EditStates      = new();
-
-    private sealed class FloatFieldState{
-        public string Text;
-        public bool   WasFocused;
-    }
 
     public static ConfigurationManagerAttributes Attributes(
         bool isAdvanced, int decimals = DefaultDecimals, float step = 0f
@@ -166,5 +161,10 @@ internal static class ConfigFloatUi{
 
                    GUILayout.EndHorizontal();
                };
+    }
+
+    private sealed class FloatFieldState{
+        public string Text;
+        public bool   WasFocused;
     }
 }

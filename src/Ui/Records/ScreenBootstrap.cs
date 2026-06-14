@@ -6,8 +6,8 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Ui.Records;
 
 /// <summary>
-/// Registers the RECORDS <see cref="RecordsScreen"/> clone. Called from <see cref="Menu.MenuBootstrap"/>
-/// (<c>CommonUI.Awake</c> and <c>MenuScreen.Awake</c>) -- both paths are idempotent.
+///     Registers the RECORDS <see cref="RecordsScreen" /> clone. Called from <see cref="Menu.MenuBootstrap" />
+///     (<c>CommonUI.Awake</c> and <c>MenuScreen.Awake</c>) -- both paths are idempotent.
 /// </summary>
 internal static class ScreenBootstrap{
     private static Transform _hostTransform;

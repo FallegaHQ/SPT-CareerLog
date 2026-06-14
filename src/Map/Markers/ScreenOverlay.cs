@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using Softwyx.CareerLog.Map.Data;
 using Softwyx.CareerLog.Persistence.Models;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,18 +12,18 @@ internal sealed class ScreenOverlay : MonoBehaviour{
 
     private const float DefaultMarkerPixels = 32f;
 
-    private readonly List<MarkerEntry> _entries = [];
+    private readonly List<MarkerEntry>  _entries = [];
+    private          LocationDefinition _definition;
 
-    private RectTransform      _layer;
-    private RectTransform      _trailAnchor;
-    private LocationDefinition _definition;
-    private PopoverHost        _popoverHost;
-    private RaidRecord         _raid;
+    private RectTransform _layer;
+    private PopoverHost   _popoverHost;
+    private RaidRecord    _raid;
+    private RectTransform _trailAnchor;
 
-    private struct MarkerEntry{
-        internal RectTransform     Rect;
-        internal Vector2           AnchorLocal;
-        internal RaidMovementValue Value;
+    private void LateUpdate(){
+        if(_entries.Count == 0 || !_trailAnchor) return;
+
+        SyncTransforms();
     }
 
     public void Bind(RectTransform trailAnchor, LocationDefinition definition){
@@ -75,12 +75,6 @@ internal sealed class ScreenOverlay : MonoBehaviour{
                     _layer.GetChild(i).
                            gameObject
                    );
-    }
-
-    private void LateUpdate(){
-        if(_entries.Count == 0 || !_trailAnchor) return;
-
-        SyncTransforms();
     }
 
     private void EnsureLayer(){
@@ -217,5 +211,11 @@ internal sealed class ScreenOverlay : MonoBehaviour{
         var canvas = GetComponentInParent<Canvas>();
 
         return canvas && canvas.renderMode != RenderMode.ScreenSpaceOverlay ? canvas.worldCamera : null;
+    }
+
+    private struct MarkerEntry{
+        internal RectTransform     Rect;
+        internal Vector2           AnchorLocal;
+        internal RaidMovementValue Value;
     }
 }

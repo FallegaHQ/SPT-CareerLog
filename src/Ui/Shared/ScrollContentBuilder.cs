@@ -5,6 +5,7 @@ using Softwyx.CareerLog.Ui.Design;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace Softwyx.CareerLog.Ui.Shared;
 
@@ -22,7 +23,7 @@ internal static class ScrollContentBuilder{
         for(var i = contentRoot.childCount - 1; i >= 0; i--){
             var child = contentRoot.GetChild(i);
 
-            if(child) UnityEngine.Object.Destroy(child.gameObject);
+            if(child) Object.Destroy(child.gameObject);
         }
     }
 

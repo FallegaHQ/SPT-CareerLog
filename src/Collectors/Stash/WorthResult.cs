@@ -1,15 +1,15 @@
-using Softwyx.CareerLog.Persistence.Models;
 using System.Collections.Generic;
+using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Collectors.Stash;
 
 internal sealed class WorthResult{
-    public long                       Rubles;
-    public long                       ItemsValue;
     public long                       EquippedValue;
     public long                       InventoryValue;
-    public long                       TotalWorth;
     public int                        ItemCount;
+    public long                       ItemsValue;
     public int                        OccupiedSlotCount;
+    public long                       Rubles;
     public List<StashSnapshotTopItem> TopItems = [];
+    public long                       TotalWorth;
 }

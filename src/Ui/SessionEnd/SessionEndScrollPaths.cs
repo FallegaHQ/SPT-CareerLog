@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Ui.SessionEnd;
 
 /// <summary>
-/// Post-raid session-end screens: use the cloned vanilla <c>Scroll View</c>.
+///     Post-raid session-end screens: use the cloned vanilla <c>Scroll View</c>.
 /// </summary>
 internal static class SessionEndScrollPaths{
     private static Transform FindScrollViewport(Transform screenRoot){

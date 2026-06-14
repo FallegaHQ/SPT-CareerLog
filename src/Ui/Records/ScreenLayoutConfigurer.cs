@@ -1,10 +1,10 @@
 using EFT.HandBook;
 using EFT.UI;
 using Softwyx.CareerLog.Interop;
-using UnityEngine;
 using Softwyx.CareerLog.Ui.Records.Layout;
 using Softwyx.CareerLog.Ui.Records.Menu;
 using Softwyx.CareerLog.Ui.Records.PlayerModel;
+using UnityEngine;
 
 namespace Softwyx.CareerLog.Ui.Records;
 

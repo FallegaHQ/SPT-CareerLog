@@ -1,13 +1,13 @@
-using Softwyx.CareerLog.Ui.SessionEnd;
-using SPT.Reflection.Patching;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Softwyx.CareerLog.Interop;
+using Softwyx.CareerLog.Ui.SessionEnd;
+using SPT.Reflection.Patching;
 
 namespace Softwyx.CareerLog.Patches;
 
 /// <summary>
-/// After exit status: raid map, then debrief, then vanilla kill list.
+///     After exit status: raid map, then debrief, then vanilla kill list.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class PostRaidBeforeKillListPatch : ModulePatch{

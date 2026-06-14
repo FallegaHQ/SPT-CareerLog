@@ -1,7 +1,7 @@
-using Softwyx.CareerLog.Config;
-using Softwyx.CareerLog.Persistence.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Softwyx.CareerLog.Config;
+using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Persistence.Markers;
 

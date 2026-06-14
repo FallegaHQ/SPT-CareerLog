@@ -1,7 +1,7 @@
-using Softwyx.CareerLog.Persistence.Financial;
-using Softwyx.CareerLog.Persistence.Models;
 using System;
 using System.Collections.Generic;
+using Softwyx.CareerLog.Persistence.Financial;
+using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Persistence;
 

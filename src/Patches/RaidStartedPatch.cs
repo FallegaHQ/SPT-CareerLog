@@ -1,13 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using EFT;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Session;
 using SPT.Reflection.Patching;
-using System.Reflection;
 
 namespace Softwyx.CareerLog.Patches;
 
-/// <summary>Postfix on <see cref="GameWorld.OnGameStarted"/> -- start raid session buffer.</summary>
+/// <summary>Postfix on <see cref="GameWorld.OnGameStarted" /> -- start raid session buffer.</summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class RaidStartedPatch : ModulePatch{
     protected override MethodBase GetTargetMethod(){

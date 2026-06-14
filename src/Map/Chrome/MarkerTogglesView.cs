@@ -4,15 +4,16 @@ using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Shared;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Softwyx.CareerLog.Map.Chrome;
 
 internal sealed class MarkerTogglesView : MonoBehaviour{
-    private const float ToggleSize = 18f;
+    private const float    ToggleSize = 18f;
+    private       Toggle[] _markerToggles;
 
     private RaidPlaybackController _playback;
-    private Toggle[]               _markerToggles;
     private Toggle                 _rememberToggle;
     private bool                   _syncing;
 
@@ -137,7 +138,7 @@ internal sealed class MarkerTogglesView : MonoBehaviour{
     }
 
     private static Toggle CreateToggle(
-        Transform parent, string localeKey, TMP_FontAsset font, UnityEngine.Events.UnityAction<bool> onChanged
+        Transform parent, string localeKey, TMP_FontAsset font, UnityAction<bool> onChanged
     ){
         var row = new GameObject(
                                  "ToggleRow",

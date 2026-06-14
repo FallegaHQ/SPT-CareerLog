@@ -1,22 +1,32 @@
+using System;
+using System.Collections.Generic;
 using Softwyx.CareerLog.Map.Data;
 using Softwyx.CareerLog.Map.Panel;
 using Softwyx.CareerLog.Map.Viewport;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Map.Trail;
 
 /// <summary>Redraws the trail texture when viewport zoom changes so line thickness stays visually balanced.</summary>
 internal sealed class TrailZoomSync : MonoBehaviour{
-    private ViewportZoom           _zoom;
-    private Texture2D              _texture;
     private LocationDefinition     _definition;
-    private IReadOnlyList<Vector2> _points;
-    private RaidMovementIndex      _index;
     private Func<float>            _drawTimeSec;
-    private float                  _lineWidthBaselineScale = 1f;
+    private RaidMovementIndex      _index;
     private float                  _lastRedrawScale;
+    private float                  _lineWidthBaselineScale = 1f;
+    private IReadOnlyList<Vector2> _points;
+    private Texture2D              _texture;
+    private ViewportZoom           _zoom;
+
+    private void LateUpdate(){
+        if(!_zoom || !_texture || _definition == null || _points == null || _index == null) return;
+
+        var scale = _zoom.CombinedScale;
+
+        if(Mathf.Approximately(scale, _lastRedrawScale)) return;
+
+        Redraw();
+    }
 
     public void Bind(ViewportZoom zoom, TrailContext ctx, Func<float> drawTimeSec){
         _zoom                   = zoom;
@@ -38,16 +48,6 @@ internal sealed class TrailZoomSync : MonoBehaviour{
         _index           = null;
         _drawTimeSec     = null;
         _lastRedrawScale = -1f;
-    }
-
-    private void LateUpdate(){
-        if(!_zoom || !_texture || _definition == null || _points == null || _index == null) return;
-
-        var scale = _zoom.CombinedScale;
-
-        if(Mathf.Approximately(scale, _lastRedrawScale)) return;
-
-        Redraw();
     }
 
     private void Redraw(){

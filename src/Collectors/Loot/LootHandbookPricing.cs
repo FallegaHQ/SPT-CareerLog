@@ -14,8 +14,8 @@ internal static class LootHandbookPricing{
     }
 
     /// <summary>
-    /// Handbook value for an inventory root (equipment slot or stash cell):
-    /// assembled parts plus nested storage-grid contents, valued recursively.
+    ///     Handbook value for an inventory root (equipment slot or stash cell):
+    ///     assembled parts plus nested storage-grid contents, valued recursively.
     /// </summary>
     public static long EstimateInventoryRoot(Item item){
         return ItemHandbookValue.Aggregate(item);

@@ -4,16 +4,16 @@ namespace Softwyx.CareerLog.Map.Markers;
 
 /// <summary>Which marker families are drawn during map playback.</summary>
 internal sealed class Visibility{
-    public bool Spawn        = true;
-    public bool Kills        = true;
-    public bool Loot         = true;
-    public bool Injury       = true;
-    public bool Healing      = true;
     public bool Achievements = true;
+    public bool Death        = true;
     public bool DoorUnlocks  = true;
     public bool Extract      = true;
-    public bool Death        = true;
+    public bool Healing      = true;
+    public bool Injury       = true;
+    public bool Kills        = true;
+    public bool Loot         = true;
     public bool RememberPrefs;
+    public bool Spawn = true;
 
     public bool IsVisible(RaidMovementValue marker){
         if(marker == null) return false;

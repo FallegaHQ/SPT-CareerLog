@@ -9,13 +9,13 @@ internal sealed class LifetimeStats{
         set;
     }
 
-    /// <summary>Full extract with Found in Raid (vanilla <see cref="ExitStatus.Survived"/>).</summary>
+    /// <summary>Full extract with Found in Raid (vanilla <see cref="ExitStatus.Survived" />).</summary>
     public int RaidsSurvived{
         get;
         set;
     }
 
-    /// <summary>Extracted too quickly / low activity (vanilla <see cref="EFT.ExitStatus.Runner"/>).</summary>
+    /// <summary>Extracted too quickly / low activity (vanilla <see cref="EFT.ExitStatus.Runner" />).</summary>
     public int RaidsRunThrough{
         get;
         set;

@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Ui.Records.Menu;
 
 /// <summary>
-/// Keeps menu stack buttons active (so other mods can reposition them) but invisible until Career Log reveals them.
+///     Keeps menu stack buttons active (so other mods can reposition them) but invisible until Career Log reveals them.
 /// </summary>
 internal static class MenuButtonReveal{
     public static void HideStack(MenuScreen menuScreen, DefaultUIButton recordsButton){

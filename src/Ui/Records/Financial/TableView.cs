@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Persistence.Financial;
 using Softwyx.CareerLog.Persistence.Models;
 using Softwyx.CareerLog.Ui.Shared;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Softwyx.CareerLog.Ui.Records.Financial;

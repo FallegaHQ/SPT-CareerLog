@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
 using BepInEx.Configuration;
 using Softwyx.CareerLog.Collectors.Stash;
 using Softwyx.CareerLog.Persistence;
 using Softwyx.CareerLog.Persistence.Financial;
-using System;
-using System.Collections.Generic;
 
 namespace Softwyx.CareerLog.Config;
 
@@ -41,6 +41,11 @@ internal static class Settings{
     public static  ConfigEntry<string> FinancialTopItemExcludedTemplateIds;
     public static  ConfigEntry<string> FinancialTopItemExcludedCategories;
     public static  ConfigEntry<bool>   FinancialTopItemExcludeSecureContainers;
+    public static  ConfigEntry<int>    FinancialChartMaxPointsDay;
+    public static  ConfigEntry<int>    FinancialChartMaxPointsWeek;
+    public static  ConfigEntry<int>    FinancialChartMaxPointsMonth;
+    public static  ConfigEntry<int>    FinancialChartMaxPointsLifetime;
+    public static  ConfigEntry<int>    FinancialChartMaxPointsPerDay;
 
     // ReSharper disable once CollectionNeverQueried.Local
     private static readonly List<ConfigEntryBase> Entries = [];
@@ -324,11 +329,71 @@ internal static class Settings{
                                                                   )
                                                              );
 
+        FinancialChartMaxPointsDay = config.Bind(
+                                                 FinancialSection,
+                                                 "Chart max points (day view)",
+                                                 24,
+                                                 new ConfigDescription(
+                                                                       "Show every snapshot in the day until this count is exceeded; then keep first, last, lowest, and highest worth plus evenly spaced samples.",
+                                                                       new AcceptableValueRange<int>(4, 96),
+                                                                       Advanced()
+                                                                      )
+                                                );
+
+        FinancialChartMaxPointsWeek = config.Bind(
+                                                  FinancialSection,
+                                                  "Chart max points (week view)",
+                                                  21,
+                                                  new ConfigDescription(
+                                                                        "Show every snapshot in the week until this count is exceeded; then cap each active day separately.",
+                                                                        new AcceptableValueRange<int>(7, 168),
+                                                                        Advanced()
+                                                                       )
+                                                 );
+
+        FinancialChartMaxPointsMonth = config.Bind(
+                                                   FinancialSection,
+                                                   "Chart max points (month view)",
+                                                   93,
+                                                   new ConfigDescription(
+                                                                         "Show every snapshot in the month until this count is exceeded; then cap each active day separately.",
+                                                                         new AcceptableValueRange<int>(14, 310),
+                                                                         Advanced()
+                                                                        )
+                                                  );
+
+        FinancialChartMaxPointsLifetime = config.Bind(
+                                                      FinancialSection,
+                                                      "Chart max points (lifetime view)",
+                                                      48,
+                                                      new ConfigDescription(
+                                                                            "Show every snapshot until this count is exceeded; then keep first, latest, lowest, and highest worth plus evenly spaced samples.",
+                                                                            new AcceptableValueRange<int>(8, 256),
+                                                                            Advanced()
+                                                                           )
+                                                     );
+
+        FinancialChartMaxPointsPerDay = config.Bind(
+                                                    FinancialSection,
+                                                    "Chart max points per active day",
+                                                    3,
+                                                    new ConfigDescription(
+                                                                          "When a period exceeds its view max, each day that has snapshots keeps at least one point and at most this many (always including that day's first and last snapshot).",
+                                                                          new AcceptableValueRange<int>(1, 24),
+                                                                          Advanced()
+                                                                         )
+                                                   );
+
         Entries.Add(StashSnapshotOnMenuOpen);
         Entries.Add(_financialChartDefaultStyle);
         Entries.Add(FinancialTopItemExcludedTemplateIds);
         Entries.Add(FinancialTopItemExcludedCategories);
         Entries.Add(FinancialTopItemExcludeSecureContainers);
+        Entries.Add(FinancialChartMaxPointsDay);
+        Entries.Add(FinancialChartMaxPointsWeek);
+        Entries.Add(FinancialChartMaxPointsMonth);
+        Entries.Add(FinancialChartMaxPointsLifetime);
+        Entries.Add(FinancialChartMaxPointsPerDay);
     }
 
     public static SideFilter ParseSideFilter(){

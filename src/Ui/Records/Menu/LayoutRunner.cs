@@ -8,8 +8,8 @@ using UnityEngine;
 namespace Softwyx.CareerLog.Ui.Records.Menu;
 
 /// <summary>
-/// Defers RECORDS layout until PitFireTeam's squad button exists and has been positioned,
-/// then re-applies once after Menu Overhaul finishes its stack.
+///     Defers RECORDS layout until PitFireTeam's squad button exists and has been positioned,
+///     then re-applies once after Menu Overhaul finishes its stack.
 /// </summary>
 internal static class LayoutRunner{
     private const int PitFireTeamSettleFrames      = 2;
@@ -72,7 +72,7 @@ internal static class LayoutRunner{
     }
 
     /// <summary>
-    /// Poll until PitFireTeam (re)creates the squad button, then wait a few frames so their layout can finish.
+    ///     Poll until PitFireTeam (re)creates the squad button, then wait a few frames so their layout can finish.
     /// </summary>
     private static IEnumerator WaitForPitFireTeamSquadReady(MenuScreen menuScreen){
         if(!PitFireTeamCompat.IsLoaded) yield break;
