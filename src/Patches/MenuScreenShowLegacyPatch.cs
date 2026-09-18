@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using EFT;
 using EFT.UI;
+using EFT.UI.Matchmaker;
 using HarmonyLib;
 using Softwyx.CareerLog.Ui.Records.Menu;
 using SPT.Reflection.Patching;
@@ -20,7 +21,7 @@ internal sealed class MenuScreenShowLegacyPatch : ModulePatch{
                                   nameof(MenuScreen.Show),
                                   [
                                       typeof(Profile),
-                                      typeof(MatchmakerPlayerControllerClass),
+                                      typeof(MatchmakerPlayersController),
                                       typeof(ESessionMode)
                                   ]
                                  );

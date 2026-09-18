@@ -1,4 +1,5 @@
 using System;
+using EFT;
 
 namespace Softwyx.CareerLog.Interop;
 

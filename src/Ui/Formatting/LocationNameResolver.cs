@@ -1,11 +1,12 @@
 using System;
+using JsonType;
 using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Localization;
 
 namespace Softwyx.CareerLog.Ui.Formatting;
 
 internal static class LocationNameResolver{
-    public static string Resolve(string locationId, LocationSettingsClass.Location location = null){
+    public static string Resolve(string locationId, LocationSettings.Location location = null){
         if(location != null && !string.IsNullOrWhiteSpace(location.LocalizedName)) return location.LocalizedName;
 
         if(string.IsNullOrEmpty(locationId)) return LocaleLoader.Format(LocaleKeys.LocationUnknown);

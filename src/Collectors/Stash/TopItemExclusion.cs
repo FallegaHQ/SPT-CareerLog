@@ -28,7 +28,7 @@ internal static class TopItemExclusion{
     }
 
     private static bool IsSecureContainer(Item item){
-        return item is MobContainerItemClass{
+        return item is MobContainer{
                            isSecured: true
                        };
     }

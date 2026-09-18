@@ -8,10 +8,10 @@ namespace Softwyx.CareerLog.Persistence;
 internal static class VanillaSessionCounterSnapshot{
     private static readonly CounterSpec[] AllCounters = DiscoverAllCounters();
 
-    public static void Capture(SessionCountersClass sessionCounters, RaidRecord record){
+    public static void Capture(CountersCollection sessionCounters, RaidRecord record){
         if(sessionCounters == null || record == null) return;
 
-        SessionCounterTypesAbstractClass.Warmup();
+        PredefinedCounters.Warmup();
 
         foreach(var counter in AllCounters){
             if(counter == null || counter.Id == null || string.IsNullOrEmpty(counter.Name)) continue;
@@ -28,13 +28,13 @@ internal static class VanillaSessionCounterSnapshot{
     private static CounterSpec[] DiscoverAllCounters(){
         var specs = new List<CounterSpec>(128);
 
-        foreach(var field in typeof(SessionCounterTypesAbstractClass).GetFields(
-                                                                                BindingFlags.Public
-                                                                              | BindingFlags.Static
-                                                                               )){
-            if(field.FieldType != typeof(SessionCountersClass.SessionCounterIdentifierValueClass)) continue;
+        foreach(var field in typeof(PredefinedCounters).GetFields(
+                                                                BindingFlags.Public
+                                                              | BindingFlags.Static
+                                                               )){
+            if(field.FieldType != typeof(CountersCollection.Identifier)) continue;
 
-            var id = field.GetValue(null) as SessionCountersClass.SessionCounterIdentifierValueClass;
+            var id = field.GetValue(null) as CountersCollection.Identifier;
 
             if(id == null) continue;
 
@@ -51,8 +51,8 @@ internal static class VanillaSessionCounterSnapshot{
     }
 
     private sealed class CounterSpec{
-        public SessionCountersClass.SessionCounterIdentifierValueClass Id;
-        public string                                                  Name;
-        public CounterValueType                                        ValueType;
+        public CountersCollection.Identifier Id;
+        public string                      Name;
+        public CounterValueType            ValueType;
     }
 }

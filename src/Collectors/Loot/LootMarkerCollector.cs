@@ -79,7 +79,7 @@ internal static class LootMarkerCollector{
         switch(item){
             case null:
                 return;
-            case SearchableItemItemClass searchableItemItem:
+            case SearchableItem searchableItemItem:
                 RecordContainerPickup(searchableItemItem);
 
                 return;
@@ -116,7 +116,7 @@ internal static class LootMarkerCollector{
                                  );
     }
 
-    private static void RecordContainerPickup(SearchableItemItemClass container){
+    private static void RecordContainerPickup(SearchableItem container){
         var player = LocalRaidPlayer.Instance;
 
         if(player == null) return;
@@ -174,10 +174,10 @@ internal static class LootMarkerCollector{
         TryRegisterNewLoot(item, out _);
     }
 
-    private static List<Item> CollectRecursiveLootUnits(SearchableItemItemClass root){
+    private static List<Item> CollectRecursiveLootUnits(SearchableItem root){
         var result = new List<Item>();
         var seen   = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        var queue  = new Queue<SearchableItemItemClass>();
+        var queue  = new Queue<SearchableItem>();
         queue.Enqueue(root);
 
         while(queue.Count > 0){
@@ -195,7 +195,7 @@ internal static class LootMarkerCollector{
 
                 if(!seen.Add(id)) continue;
 
-                if(sub is SearchableItemItemClass nested){
+                if(sub is SearchableItem nested){
                     // Nested containers get their own count entry via RecordPickupSingle when processed as a loot unit
                     // (called by RecordContainerPickup's loop).
                     queue.Enqueue(nested);

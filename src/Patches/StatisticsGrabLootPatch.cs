@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using EFT;
 using EFT.InventoryLogic;
 using Softwyx.CareerLog.Collectors.Loot;
 using Softwyx.CareerLog.Config;
@@ -11,18 +12,18 @@ namespace Softwyx.CareerLog.Patches;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class StatisticsGrabLootPatch : ModulePatch{
     protected override MethodBase GetTargetMethod(){
-        return typeof(LocationStatisticsCollectorAbstractClass).GetMethod(
-                                                                          nameof(
-                                                                              LocationStatisticsCollectorAbstractClass.
-                                                                                  OnGrabLoot)
-                                                                         );
+        return typeof(BaseStatisticsManager).GetMethod(
+                                                       nameof(
+                                                           BaseStatisticsManager.
+                                                               OnGrabLoot)
+                                                      );
     }
 
     [PatchPostfix]
-    private static void Postfix(LocationStatisticsCollectorAbstractClass __instance, Item item){
+    private static void Postfix(BaseStatisticsManager __instance, Item item){
         if(!Settings.Enabled.Value || !CareerLogSession.CollectorsActive) return;
 
-        if(!CollectorProfileGuard.IsLocalStatisticsProfile(__instance.Profile_0)) return;
+        if(!CollectorProfileGuard.IsLocalStatisticsProfile(__instance._profile)) return;
 
         if(item == null) return;
 

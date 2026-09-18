@@ -1,3 +1,5 @@
+using EFT;
+
 namespace Softwyx.CareerLog.Localization;
 
 internal static class ItemLocale{

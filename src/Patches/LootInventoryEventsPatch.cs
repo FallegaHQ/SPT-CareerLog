@@ -56,7 +56,7 @@ internal sealed class LootInventoryEventsPatch : ModulePatch{
             if(_owner == owner) _owner = null;
         }
 
-        private static void OnItemAdded(GEventArgs2 args){
+        private static void OnItemAdded(AddItemEventArgs args){
             if(!CareerLogSession.CollectorsActive) return;
 
             var item = args?.Item;
@@ -66,7 +66,7 @@ internal sealed class LootInventoryEventsPatch : ModulePatch{
             LootMarkerCollector.RecordAdded(item);
         }
 
-        private static void OnItemRemoved(GEventArgs3 args){
+        private static void OnItemRemoved(RemoveItemEventArgs args){
             if(!CareerLogSession.CollectorsActive) return;
 
             var item = args?.Item;
