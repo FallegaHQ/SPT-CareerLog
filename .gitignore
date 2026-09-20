@@ -9,3 +9,4 @@ certs/
 scripts/maps/node_modules/
 libs/*
 !libs/Unity.VectorGraphics.dll
+!libs/Unity.InternalAPIEngineBridge.003.dll
