@@ -4,7 +4,6 @@ using EFT.HandBook;
 using EFT.InputSystem;
 using EFT.UI;
 using EFT.UI.Screens;
-using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Persistence;
 using Softwyx.CareerLog.Persistence.Models;
@@ -46,11 +45,7 @@ internal sealed class RecordsScreen : EftScreen<RecordsScreenController, Records
         clone.SetActive(false);
 
         var handbook = clone.GetComponent<HandbookScreen>();
-        var backButton = EftScreenFieldBinder.GetField<DefaultUIButton>(
-                                                                        handbook,
-                                                                        GameAssemblyNames.HandbookScreenFields.
-                                                                            BackButton
-                                                                       );
+        var backButton = handbook._backButton;
 
         Destroy(handbook);
 

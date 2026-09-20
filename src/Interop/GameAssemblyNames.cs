@@ -1,22 +1,22 @@
-using EFT;
+using EFT.UI;
+using EFT.UI.Screens;
 
 namespace Softwyx.CareerLog.Interop;
 
 /// <summary>SPT 4.1.x private/internal field and property names. Reference these instead of raw strings in mod logic.</summary>
 internal static class GameAssemblyNames{
     internal static class BaseScreenFields{
+        /// <summary>Field: <see cref="BaseScreen{TController,TScreen,TType}.ScreenController" /></summary>
         public const string ScreenController = "ScreenController";
     }
 
     internal static class MenuScreenFields{
-        public const string PlayButton    = "_playButton";
-        public const string PlayerButton  = "_playerButton";
-        public const string TradeButton   = "_tradeButton";
-        public const string HideoutButton = "_hideoutButton";
+        /// <summary>Field: <see cref="EFT.UI.MenuScreen._inGameScreenStatus" /></summary>
         public const string IsMinimized   = "_inGameScreenStatus";
     }
 
     internal static class MenuScreenMethods{
+        /// <summary>Method: <see cref="EFT.UI.MenuScreen.ChangeScreenInGameStatus(bool)" /></summary>
         public const string SetMinimized = "ChangeScreenInGameStatus";
     }
 
@@ -31,51 +31,31 @@ internal static class GameAssemblyNames{
         public const string PitFireTeamSquadButton = "pitFireTeam_SquadControlButton";
     }
 
-    internal static class HandbookScreenFields{
-        public const string BackButton = "_backButton";
-    }
-
     internal static class SessionResultStatisticsFields{
+        /// <summary>Field: <see cref="EFT.UI.SessionEnd.SessionResultStatistics._nextButton" /></summary>
         public const string NextButton   = "_nextButton";
+        /// <summary>Field: <see cref="EFT.UI.SessionEnd.SessionResultStatistics._backButton" /></summary>
         public const string BackButton   = "_backButton";
+        /// <summary>Field: <see cref="EFT.UI.SessionEnd.SessionResultStatistics._statsSpawn" /></summary>
         public const string StatsSpawn   = "_statsSpawn";
+        /// <summary>Field: <see cref="EFT.UI.SessionEnd.SessionResultStatistics._locationName" /></summary>
         public const string LocationName = "_locationName";
     }
 
     internal static class PostRaidHealthScreenMethods{
-        public const string ContinueFromStatistics = "ProceedFromKillList";
+        /// <summary>Method: <see cref="EFT.SessionResultShowOperation.CG_get_ExitStatusScreenController" /></summary>
         public const string ContinueToKillList     = "CG_get_ExitStatusScreenController";
+        /// <summary>Method: <see cref="EFT.SessionResultShowOperation.ShowStatistics" /></summary>
         public const string ContinueToStatistics   = "ShowStatistics";
     }
 
-    internal static class PostRaidHealthScreenProperties{
-        public const string Profile = "SelectedProfile";
-    }
-
-    internal static class PostRaidHealthScreenFields{
-        public const string Location = "_location";
-    }
-
-    internal static class LocaleManagerProperties{
-        /// <summary>Requested / selected UI language (e.g. <c>en</c>, <c>ru</c>).</summary>
-        public const string SelectedLanguage = "_culture";
-    }
-
     internal static class InventoryScreenFields{
-        public const string InventoryController = "inventoryController_0";
+        /// <summary>Field: <see cref="InventoryScreen._inventoryController" /></summary>
+        public const string InventoryController = "_inventoryController";
     }
 
     internal static class ItemUiContextFields{
-        public const string InventoryController = "inventoryController_0";
-    }
-
-    internal static class InventoryPlayerModelWithStatsFields{
-        public const string PlayerModelView = "_playerModelView";
-        public const string Rotator         = "_rotator";
-        public const string DragTrigger     = "_dragTrigger";
-    }
-
-    internal static class LocaleManagerMethods{
-        public const string UpdateApplicationLanguage = nameof(LocalizationManager.UpdateApplicationLanguage);
+        /// <summary>Field: <see cref="ItemUiContext._inventoryController" /></summary>
+        public const string InventoryController = "_inventoryController";
     }
 }

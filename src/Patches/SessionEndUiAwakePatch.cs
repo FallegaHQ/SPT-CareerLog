@@ -10,6 +10,7 @@ namespace Softwyx.CareerLog.Patches;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class SessionEndUiAwakePatch : ModulePatch{
+    /// <summary>Method: <see cref="EFT.UI.SessionEnd.SessionEndUI.Awake" /></summary>
     protected override MethodBase GetTargetMethod(){
         return AccessTools.Method(typeof(SessionEndUI), nameof(SessionEndUI.Awake));
     }

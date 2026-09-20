@@ -284,10 +284,6 @@ internal static class LootMarkerCollector{
                                         };
     }
 
-    public static void RecordDropped(Item item){
-        RecordRemoved(item);
-    }
-
     /// <summary>
     ///     At extract, keep only loot-ledger items still on the player (covers dead-body transfers and other
     ///     paths that never fire inventory remove events). Bring-in gear is not in the ledger and is unaffected.

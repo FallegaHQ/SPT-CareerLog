@@ -22,18 +22,6 @@ internal static class ConfigFloatUi{
                                                  };
     }
 
-    public static void SnapEntries(
-        IEnumerable<ConfigEntryBase> entries, int decimals = DefaultDecimals, float step = 0f
-    ){
-        foreach(var entry in entries){
-            if(entry is not ConfigEntry<float> f) continue;
-
-            GetRange(f, out var min, out var max);
-
-            f.Value = Quantize(f.Value, min, max, decimals, step);
-        }
-    }
-
     private static void GetRange(ConfigEntry<float> cfg, out float min, out float max){
         var range = cfg.Description.AcceptableValues as AcceptableValueRange<float>;
 

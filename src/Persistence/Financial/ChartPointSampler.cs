@@ -65,7 +65,7 @@ internal static class ChartPointSampler{
     private static List<StashSnapshot> SampleAnchored(
         List<StashSnapshot> sorted, int maxCount, ChartAnchorFlags anchors
     ){
-        if(sorted.Count <= maxCount) return new List<StashSnapshot>(sorted);
+        if(sorted.Count <= maxCount) return [..sorted];
 
         var required = CollectRequiredIndices(sorted, anchors);
         var selected = new SortedSet<int>(required);

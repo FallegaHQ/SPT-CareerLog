@@ -15,7 +15,7 @@ internal static class RaidRecordMigration{
         raid.VanillaSessionCountersLong  ??= new Dictionary<string, long>();
         raid.VanillaSessionCountersFloat ??= new Dictionary<string, float>();
 
-        if(raid.Movement != null) raid.Movement.Values ??= [];
+        raid.Movement?.Values ??= [];
 
         raid.Loot ??= new RaidLootSummary();
 

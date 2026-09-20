@@ -14,9 +14,7 @@ internal static class ChartBuckets{
         var (start, end, _) = PeriodRange.Resolve(kind, offset, nowUtc);
         var inRange = FilterRange(snapshots, start, end);
 
-        if(inRange.Count == 0) return [];
-
-        return ChartPointSampler.Sample(inRange, kind);
+        return inRange.Count == 0 ? [] : ChartPointSampler.Sample(inRange, kind);
     }
 
     public static List<StashSnapshot> FilterTablePage(

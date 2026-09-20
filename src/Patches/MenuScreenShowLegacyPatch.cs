@@ -15,6 +15,7 @@ namespace Softwyx.CareerLog.Patches;
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class MenuScreenShowLegacyPatch : ModulePatch{
+    /// <summary>Method: <see cref="EFT.UI.MenuScreen.Show(Profile, MatchmakerPlayersController, ESessionMode)" /></summary>
     protected override MethodBase GetTargetMethod(){
         return AccessTools.Method(
                                   typeof(MenuScreen),

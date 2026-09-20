@@ -20,24 +20,15 @@ internal static class MenuScreenReflection{
     }
 
     public static DefaultUIButton GetPlayerButton(MenuScreen menuScreen){
-        return EftScreenFieldBinder.GetField<DefaultUIButton>(
-                                                              menuScreen,
-                                                              GameAssemblyNames.MenuScreenFields.PlayerButton
-                                                             );
+        return menuScreen?._playerButton;
     }
 
     public static DefaultUIButton GetTradeButton(MenuScreen menuScreen){
-        return EftScreenFieldBinder.GetField<DefaultUIButton>(
-                                                              menuScreen,
-                                                              GameAssemblyNames.MenuScreenFields.TradeButton
-                                                             );
+        return menuScreen?._tradeButton;
     }
 
     public static DefaultUIButton GetHideoutButton(MenuScreen menuScreen){
-        return EftScreenFieldBinder.GetField<DefaultUIButton>(
-                                                              menuScreen,
-                                                              GameAssemblyNames.MenuScreenFields.HideoutButton
-                                                             );
+        return menuScreen?._hideoutButton;
     }
 
     public static DefaultUIButton GetPlayButton(MenuScreen menuScreen){
@@ -47,11 +38,7 @@ internal static class MenuScreenReflection{
                                          Find(GameAssemblyNames.MenuScreenHierarchy.PlayButton)?.
                                          GetComponent<DefaultUIButton>();
 
-        return hierarchyButton
-            ?? EftScreenFieldBinder.GetField<DefaultUIButton>(
-                                                              menuScreen,
-                                                              GameAssemblyNames.MenuScreenFields.PlayButton
-                                                             );
+        return hierarchyButton ?? menuScreen._playButton;
     }
 
     public static DefaultUIButton GetCharacterButton(MenuScreen menuScreen){

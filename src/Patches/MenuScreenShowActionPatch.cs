@@ -9,6 +9,7 @@ namespace Softwyx.CareerLog.Patches;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class MenuScreenShowActionPatch : ModulePatch{
+    /// <summary>Method: <see cref="EFT.UI.MenuScreen.MainMenuBaseScreenController.ShowAction" /></summary>
     protected override MethodBase GetTargetMethod(){
         return AccessTools.Method(typeof(MenuScreenController), nameof(MenuScreenController.ShowAction));
     }

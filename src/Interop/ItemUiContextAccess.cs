@@ -11,6 +11,7 @@ internal static class ItemUiContextAccess{
     public static InventoryController GetInventoryController(){
         var context = ItemUiContext.Instance;
 
+        // _inventoryController is still private, so we need reflection
         return !context
                    ? null
                    : EftScreenFieldBinder.GetField<InventoryController>(
