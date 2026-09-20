@@ -2,7 +2,7 @@ using EFT;
 
 namespace Softwyx.CareerLog.Interop;
 
-/// <summary>Obfuscated Assembly-CSharp member names. Referenced instead of raw strings in mod logic.</summary>
+/// <summary>SPT 4.1.x private/internal field and property names. Reference these instead of raw strings in mod logic.</summary>
 internal static class GameAssemblyNames{
     internal static class BaseScreenFields{
         public const string ScreenController = "ScreenController";

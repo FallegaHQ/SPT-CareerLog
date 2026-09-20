@@ -27,7 +27,9 @@ when you report problems — they sometimes interact in odd ways.
     - `BepInEx\plugins\Softwyx.CareerLog\Softwyx.CareerLog.dll`
     - `BepInEx\plugins\Softwyx.CareerLog\locales\` (language files)
     - `BepInEx\plugins\Softwyx.CareerLog\assets\` (maps and icons)
-3. Start the game.
+    - `BepInEx\plugins\Softwyx.CareerLog\managed\Unity.VectorGraphics.dll` (Unity Vector Graphics library)
+3. Copy `Unity.VectorGraphics.dll` from `BepInEx\plugins\Softwyx.CareerLog\managed\` to your game's `EscapeFromTarkov_Data\Managed\` folder.
+4. Start the game.
 
 **First launch** may create a config file:
 
@@ -141,6 +143,12 @@ If the mod you are using is **not signed by me** then it isn't from me and I can
 **Where to send it** — Use the **issue tracker or comments** where you **downloaded** the mod. Do not email about mods.
 
 Do **not** send passwords, full Windows usernames, or unrelated personal files.
+
+---
+
+## Third-party dependencies
+
+This mod includes `Unity.VectorGraphics.dll`, which is part of Unity's official Vector Graphics package (com.unity.vectorgraphics). This is an official Unity package and is distributed under Unity's standard license terms. For more information, see [Unity's Vector Graphics documentation](https://docs.unity3d.com/Packages/com.unity.vectorgraphics@2.0/manual/index.html).
 
 ---
 

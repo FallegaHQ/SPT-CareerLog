@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk" InitialTargets="ValidateTarkovInstall">
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <RootNamespace>Softwyx.CareerLog</RootNamespace>
@@ -8,7 +8,7 @@
         <Nullable>disable</Nullable>
         <Configurations>Debug;Release;Package</Configurations>
         <!-- Patch is auto-incremented on each build (see scripts/IncrementVersion.ps1). Edit major/minor here. -->
-        <Version>1.0.526</Version>
+        <Version>1.0.529</Version>
         <!-- Set -p:IncrementVersionOnBuild=false to skip auto-bump (e.g. rebuild without changing version). -->
         <IncrementVersionOnBuild Condition="'$(IncrementVersionOnBuild)' == ''">true</IncrementVersionOnBuild>
         <AssemblyVersion>$(Version)</AssemblyVersion>
@@ -49,7 +49,7 @@
         <Reference Include="UnityEngine.CoreModule" HintPath="$(TarkovManagedDir)\UnityEngine.CoreModule.dll" Private="false"/>
         <Reference Include="UnityEngine.IMGUIModule" HintPath="$(TarkovManagedDir)\UnityEngine.IMGUIModule.dll" Private="false"/>
         <Reference Include="UnityEngine.ImageConversionModule" HintPath="$(TarkovManagedDir)\UnityEngine.ImageConversionModule.dll" Private="false"/>
-        <Reference Include="Unity.VectorGraphics" HintPath="$(TarkovManagedDir)\Unity.VectorGraphics.dll" Private="false"/>
+        <Reference Include="Unity.VectorGraphics" HintPath="$(MSBuildProjectDirectory)\libs\Unity.VectorGraphics.dll" Private="false"/>
         <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(TarkovManagedDir)\UnityEngine.TextRenderingModule.dll" Private="false"/>
     </ItemGroup>
 
@@ -75,6 +75,7 @@
         <None Remove="TEMPLATE-ATTRIBUTION.md"/>
         <None Remove="Package\**"/>
         <None Remove="certs\**"/>
+        <None Include="Directory.Build.props.user" />
     </ItemGroup>
 
     <Target Name="IncrementPatchVersion"
@@ -94,7 +95,8 @@
         <Message Importance="high" Text="Built version $(Version) (patch auto-incremented)."/>
     </Target>
 
-    <Target Name="ValidateTarkovInstall" BeforeTargets="ResolveAssemblyReferences">
+    <Target Name="ValidateTarkovInstall">        
+        <Message Importance="high" Text="Managed dir: [$(TarkovManagedDir)] exists=$([System.IO.File]::Exists('$(TarkovManagedDir)\Assembly-CSharp.dll'))"/>
         <Error
             Condition="!Exists('$(TarkovManagedDir)\Assembly-CSharp.dll')"
             Text="EFT assemblies not found. Set TarkovDir in Directory.Build.props (current: $(TarkovDir))."/>
@@ -164,6 +166,23 @@
             DestinationFiles="@(_LocaleFiles->'$(PluginDir)\locales\%(RecursiveDir)%(Filename)%(Extension)')"
             SkipUnchangedFiles="true"
             Condition="'$(DeployToPlugins)'=='true' and Exists('$(TarkovPluginsDir)') and '@(_LocaleFiles)' != ''"/>
+
+        <!-- Deploy Unity.VectorGraphics.dll to Managed folder -->
+        <Message
+            Importance="high"
+            Text="========================================================================="
+            Condition="'$(DeployToPlugins)'=='true' and Exists('$(TarkovManagedDir)') and Exists('$(MSBuildProjectDirectory)\libs\Unity.VectorGraphics.dll')"/>
+
+        <Copy
+            SourceFiles="$(MSBuildProjectDirectory)\libs\Unity.VectorGraphics.dll"
+            DestinationFolder="$(TarkovManagedDir)"
+            SkipUnchangedFiles="true"
+            Condition="'$(DeployToPlugins)'=='true' and Exists('$(TarkovManagedDir)') and Exists('$(MSBuildProjectDirectory)\libs\Unity.VectorGraphics.dll')"/>
+
+        <Message
+            Importance="high"
+            Text="Deployed Unity.VectorGraphics.dll -> $(TarkovManagedDir)"
+            Condition="'$(DeployToPlugins)'=='true' and Exists('$(TarkovManagedDir)') and Exists('$(MSBuildProjectDirectory)\libs\Unity.VectorGraphics.dll')"/>
 
         <Message
             Importance="high"

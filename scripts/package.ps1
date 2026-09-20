@@ -78,6 +78,17 @@ if (Test-Path -LiteralPath $attributionSrc)
     Copy-Item -LiteralPath $attributionSrc -Destination (Join-Path $stagingModDir 'TEMPLATE-ATTRIBUTION.md') -Force
 }
 
+# Copy Unity.VectorGraphics.dll to managed folder
+$libsSrc = Join-Path $projectDir 'libs'
+$vectorGraphicsDll = Join-Path $libsSrc 'Unity.VectorGraphics.dll'
+if (Test-Path -LiteralPath $vectorGraphicsDll)
+{
+    $stagingManaged = Join-Path $stagingModDir 'managed'
+    New-Item -ItemType Directory -Path $stagingManaged -Force | Out-Null
+    Copy-Item -LiteralPath $vectorGraphicsDll -Destination (Join-Path $stagingManaged 'Unity.VectorGraphics.dll') -Force
+    Write-Host "Packaged Unity.VectorGraphics.dll to managed folder"
+}
+
 $archivePath = Join-Path $packageDir "$modName-$modVersion.zip"
 if (Test-Path $archivePath)
 {
