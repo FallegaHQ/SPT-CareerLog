@@ -1,5 +1,6 @@
 using EFT.HandBook;
 using EFT.UI;
+using EFT.UI.Screens;
 using Softwyx.CareerLog.Infrastructure;
 using UnityEngine;
 
@@ -45,7 +46,7 @@ internal static class ScreenBootstrap{
 
         if(_hostTransform) Screen.transform.SetParent(_hostTransform, false);
 
-        CurrentScreenSingletonClass.Instance.RegisterScreen(ScreenTypes.Records, Screen);
+        EftScreenManager.Instance.RegisterScreen(ScreenTypes.Records, Screen);
 
         CareerLogPlugin.Log?.LogInfo(PluginInfo.Format("Registered Records screen (CommonUI.HandbookScreen)."));
     }

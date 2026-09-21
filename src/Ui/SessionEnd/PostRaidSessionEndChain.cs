@@ -1,4 +1,5 @@
 using System;
+using EFT;
 using EFT.UI.Screens;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Interop;
@@ -22,7 +23,7 @@ internal static class PostRaidSessionEndChain{
         ModChainCompleted = true;
     }
 
-    public static void ShowMapThenDebrief(PostRaidHealthScreenClass instance, Action continueVanillaFlow){
+    public static void ShowMapThenDebrief(SessionResultShowOperation instance, Action continueVanillaFlow){
         ModChainCompleted = false;
 
         if(instance == null){

@@ -52,7 +52,7 @@ internal sealed class RaidRecord{
 
     /// <summary>
     ///     Full vanilla session counter snapshot at raid end (see <see cref="VanillaSessionCounterSnapshot" />).
-    ///     Keys are <see cref="SessionCounterTypesAbstractClass" /> field names -- <see cref="VanillaSessionCounterKeys" />.
+    ///     Keys are <see cref="EFT.Counters.PredefinedCounters" /> field names -- <see cref="VanillaSessionCounterKeys" />.
     ///     Non-float counters (Long / Undefined) are stored here.
     /// </summary>
     public Dictionary<string, long> VanillaSessionCountersLong{

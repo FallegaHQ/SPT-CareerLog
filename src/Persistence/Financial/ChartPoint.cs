@@ -2,25 +2,19 @@ using Softwyx.CareerLog.Persistence.Models;
 
 namespace Softwyx.CareerLog.Persistence.Financial;
 
-internal readonly struct ChartPoint{
-    public ChartPoint(long totalWorth, StashSnapshot snapshot, long? displayDeltaRubles){
-        TotalWorth         = totalWorth;
-        Snapshot           = snapshot;
-        DisplayDeltaRubles = displayDeltaRubles;
-    }
-
+internal readonly struct ChartPoint(long totalWorth, StashSnapshot snapshot, long? displayDeltaRubles){
     public long TotalWorth{
         get;
-    }
+    } = totalWorth;
 
     public StashSnapshot Snapshot{
         get;
-    }
+    } = snapshot;
 
     /// <summary>Delta vs previous chart point when set; otherwise UI falls back to <see cref="StashSnapshot.DeltaRubles" />.</summary>
     public long? DisplayDeltaRubles{
         get;
-    }
+    } = displayDeltaRubles;
 
     public static ChartPoint FromSnapshot(StashSnapshot snapshot, long? previousWorth){
         if(snapshot == null) return default;

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using EFT;
 using EFT.UI;
-using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Ui.Design;
 using Softwyx.CareerLog.Ui.Utilities;
@@ -64,14 +63,7 @@ internal static class CharacterModelPresenter{
         _statsWindow = _cloneRoot.GetComponent<InventoryPlayerModelWithStatsWindow>()
                     ?? _cloneRoot.GetComponentInChildren<InventoryPlayerModelWithStatsWindow>(true);
 
-        _modelView = _statsWindow
-                         ? EftScreenFieldBinder.GetField<PlayerModelView>(
-                                                                          _statsWindow,
-                                                                          GameAssemblyNames.
-                                                                              InventoryPlayerModelWithStatsFields.
-                                                                              PlayerModelView
-                                                                         )
-                         : null;
+        _modelView = _statsWindow?._playerModelView;
 
         _modelView      ??= _cloneRoot.GetComponentInChildren<PlayerModelView>(true);
         _hostInstanceId =   hostId;

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using EFT;
 using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Ui.SessionEnd;
 using SPT.Reflection.Patching;
@@ -18,7 +19,7 @@ internal sealed class PostRaidBeforeKillListPatch : ModulePatch{
     }
 
     [PatchPrefix]
-    private static bool Prefix(PostRaidHealthScreenClass __instance){
+    private static bool Prefix(SessionResultShowOperation __instance){
         if(_showVanillaKillList || !PostRaidSessionEndChain.CanRunModChain()) return true;
 
         PostRaidSessionEndChain.ShowMapThenDebrief(__instance, () => ContinueToKillList(__instance));
@@ -26,7 +27,7 @@ internal sealed class PostRaidBeforeKillListPatch : ModulePatch{
         return false;
     }
 
-    private static void ContinueToKillList(PostRaidHealthScreenClass instance){
+    private static void ContinueToKillList(SessionResultShowOperation instance){
         PostRaidSessionEndChain.MarkModChainCompleted();
 
         _showVanillaKillList = true;

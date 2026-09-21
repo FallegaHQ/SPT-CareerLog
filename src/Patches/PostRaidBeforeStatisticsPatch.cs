@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using EFT;
 using Softwyx.CareerLog.Config;
 using Softwyx.CareerLog.Interop;
 using Softwyx.CareerLog.Ui.SessionEnd;
@@ -19,7 +20,7 @@ internal sealed class PostRaidBeforeStatisticsPatch : ModulePatch{
     }
 
     [PatchPrefix]
-    private static bool Prefix(PostRaidHealthScreenClass __instance){
+    private static bool Prefix(SessionResultShowOperation __instance){
         if(_continueVanillaStatistics || !PostRaidSessionEndChain.ModChainCompleted) return true;
 
         if(Settings.RestoreVanillaStatistics.Value) return true;

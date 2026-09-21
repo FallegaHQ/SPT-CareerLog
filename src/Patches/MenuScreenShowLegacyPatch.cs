@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using EFT;
 using EFT.UI;
+using EFT.UI.Matchmaker;
 using HarmonyLib;
 using Softwyx.CareerLog.Ui.Records.Menu;
 using SPT.Reflection.Patching;
@@ -14,13 +15,14 @@ namespace Softwyx.CareerLog.Patches;
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class MenuScreenShowLegacyPatch : ModulePatch{
+    /// <summary>Method: <see cref="EFT.UI.MenuScreen.Show(Profile, MatchmakerPlayersController, ESessionMode)" /></summary>
     protected override MethodBase GetTargetMethod(){
         return AccessTools.Method(
                                   typeof(MenuScreen),
                                   nameof(MenuScreen.Show),
                                   [
                                       typeof(Profile),
-                                      typeof(MatchmakerPlayerControllerClass),
+                                      typeof(MatchmakerPlayersController),
                                       typeof(ESessionMode)
                                   ]
                                  );

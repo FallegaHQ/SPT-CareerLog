@@ -1,3 +1,4 @@
+using EFT.UI.Screens;
 using EFT.UI.SessionEnd;
 using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Ui.SessionEnd.Debrief;
@@ -32,7 +33,7 @@ internal static class SessionEndUiBootstrap{
             RaidMapScreen = SessionResultRaidMap.CreateFromTemplate(template);
 
             if(RaidMapScreen)
-                CurrentScreenSingletonClass.Instance.RegisterScreen(ScreenTypes.RaidMap, RaidMapScreen);
+                EftScreenManager.Instance.RegisterScreen(ScreenTypes.RaidMap, RaidMapScreen);
             else
                 CareerLogPlugin.Log?.LogError(PluginInfo.Format("Failed to create raid map screen."));
         }
@@ -41,7 +42,7 @@ internal static class SessionEndUiBootstrap{
             DebriefScreen = SessionResultCareerLog.CreateFromTemplate(template);
 
             if(DebriefScreen)
-                CurrentScreenSingletonClass.Instance.RegisterScreen(ScreenTypes.Debrief, DebriefScreen);
+                EftScreenManager.Instance.RegisterScreen(ScreenTypes.Debrief, DebriefScreen);
             else
                 CareerLogPlugin.Log?.LogError(PluginInfo.Format("Failed to create raid debrief screen."));
         }

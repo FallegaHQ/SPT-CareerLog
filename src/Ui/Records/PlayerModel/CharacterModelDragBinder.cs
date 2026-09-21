@@ -1,7 +1,6 @@
 using EFT.UI;
 using EFT.Utilities;
 using HarmonyLib;
-using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Interop;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,16 +16,8 @@ internal static class CharacterModelDragBinder{
     public static void WireStatsWindow(InventoryPlayerModelWithStatsWindow statsWindow, PlayerModelView modelView){
         if(!statsWindow || !modelView) return;
 
-        var rotator = EftScreenFieldBinder.GetField<XCoordRotation>(
-                                                                    statsWindow,
-                                                                    GameAssemblyNames.
-                                                                        InventoryPlayerModelWithStatsFields.Rotator
-                                                                   );
-        var drag = EftScreenFieldBinder.GetField<DragTrigger>(
-                                                              statsWindow,
-                                                              GameAssemblyNames.InventoryPlayerModelWithStatsFields.
-                                                                  DragTrigger
-                                                             );
+        var rotator = statsWindow._rotator;
+        var drag    = statsWindow._dragTrigger;
 
         if(!rotator || !drag){
             InstallDragZoneFallback(modelView);
@@ -115,13 +106,11 @@ internal static class CharacterModelDragBinder{
 
         if(!template) return;
 
-        var source = EftScreenFieldBinder.GetField<XCoordRotation>(template, "_rotator");
+        var source = template._rotator;
 
         if(!source) return;
 
-        var speed = Traverse.Create(source).
-                             Field("_rotationSpeed").
-                             GetValue<float>();
+        var speed = source._rotationSpeed;
 
         Traverse.Create(target).
                  Field("_rotationSpeed").

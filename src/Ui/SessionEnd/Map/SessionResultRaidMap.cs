@@ -3,6 +3,7 @@ using EFT.InputSystem;
 using EFT.UI;
 using EFT.UI.Screens;
 using EFT.UI.SessionEnd;
+using JsonType;
 using Softwyx.CareerLog.Infrastructure;
 using Softwyx.CareerLog.Localization;
 using Softwyx.CareerLog.Map;
@@ -62,7 +63,7 @@ internal sealed class SessionResultRaidMap : EftScreen<MapScreenController, Sess
         Show(controller.Location, controller.RaidRecord);
     }
 
-    private void Show(LocationSettingsClass.Location location, RaidRecord raidRecord){
+    private void Show(LocationSettings.Location location, RaidRecord raidRecord){
         ShowGameObject();
         _nextButton.Interactable = true;
         _backButton.Interactable = true;

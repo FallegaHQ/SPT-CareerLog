@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Comfort.Common;
+using EFT.HandBook;
 using EFT.InventoryLogic;
 
 namespace Softwyx.CareerLog.Collectors.Loot;
@@ -17,7 +18,7 @@ internal static class ItemHandbookValue{
     public static long BuyoutUnit(Item item, int itemsCount = 0){
         if(item?.TemplateId == null) return 0L;
 
-        var handbook = Singleton<HandbookClass>.Instance;
+        var handbook = Singleton<Handbook>.Instance;
 
         if(handbook == null) return 0L;
 
@@ -35,7 +36,7 @@ internal static class ItemHandbookValue{
     public static long Assembled(Item item){
         if(item?.TemplateId == null) return 0L;
 
-        if(Singleton<HandbookClass>.Instance == null) return 0L;
+        if(Singleton<Handbook>.Instance == null) return 0L;
 
         AssembledPartsBuffer.Clear();
         item.GetAllItemsNonAlloc(AssembledPartsBuffer, true);
@@ -67,7 +68,7 @@ internal static class ItemHandbookValue{
     }
 
     internal static bool HasStorageGrids(Item item){
-        return item is SearchableItemItemClass;
+        return item is SearchableItem;
     }
 
     private static IEnumerable<Item> GetDirectGridItems(Item item){

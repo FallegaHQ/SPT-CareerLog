@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using EFT.Achievements;
 using EFT.Quests;
 using Softwyx.CareerLog.Collectors.Meta;
 using Softwyx.CareerLog.Config;
@@ -11,14 +12,14 @@ namespace Softwyx.CareerLog.Patches;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 internal sealed class AchievementUnlockPatch : ModulePatch{
     protected override MethodBase GetTargetMethod(){
-        return typeof(AchievementTaskClass).GetMethod(
-                                                      nameof(AchievementTaskClass.SetStatus),
+        return typeof(Achievement).GetMethod(
+                                                      nameof(Achievement.SetStatus),
                                                       BindingFlags.Instance | BindingFlags.Public
                                                      );
     }
 
     [PatchPostfix]
-    private static void Postfix(AchievementTaskClass __instance, EQuestStatus status, bool notify, bool fromServer){
+    private static void Postfix(Achievement __instance, EQuestStatus status, bool notify, bool fromServer){
         if(!Settings.Enabled.Value || !CareerLogSession.CollectorsActive) return;
 
         if(status != EQuestStatus.Success || !notify) return;

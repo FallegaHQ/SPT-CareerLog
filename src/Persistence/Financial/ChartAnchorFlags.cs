@@ -4,6 +4,7 @@ namespace Softwyx.CareerLog.Persistence.Financial;
 
 [Flags]
 internal enum ChartAnchorFlags{
+    // ReSharper disable once UnusedMember.Global
     None     = 0,
     First    = 1 << 0,
     Last     = 1 << 1,

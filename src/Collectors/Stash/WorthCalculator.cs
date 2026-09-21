@@ -70,7 +70,7 @@ internal static class WorthCalculator{
         return result;
     }
 
-    private static IEnumerable<Item> GetStashTopLevelItems(StashItemClass stash){
+    private static IEnumerable<Item> GetStashTopLevelItems(EFT.InventoryLogic.Stash stash){
         var grid = stash?.Grid;
 
         if(grid?.ContainedItems == null) yield break;

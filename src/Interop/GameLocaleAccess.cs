@@ -1,8 +1,9 @@
 using System;
+using EFT;
 
 namespace Softwyx.CareerLog.Interop;
 
-/// <summary>Read labels from the merged game locale (<see cref="LocaleManagerClass" />).</summary>
+/// <summary>Read labels from the merged game locale (<see cref="LocalizationManager" />).</summary>
 internal static class GameLocaleAccess{
     public static string TryLocalize(string key){
         if(string.IsNullOrEmpty(key)) return null;
