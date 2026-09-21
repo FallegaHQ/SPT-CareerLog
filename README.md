@@ -27,10 +27,9 @@ when you report problems — they sometimes interact in odd ways.
     - `BepInEx\plugins\Softwyx.CareerLog\Softwyx.CareerLog.dll`
     - `BepInEx\plugins\Softwyx.CareerLog\locales\` (language files)
     - `BepInEx\plugins\Softwyx.CareerLog\assets\` (maps and icons)
-    - `BepInEx\plugins\Softwyx.CareerLog\managed\Unity.VectorGraphics.dll` (Unity Vector Graphics library)
-    - `BepInEx\plugins\Softwyx.CareerLog\managed\Unity.InternalAPIEngineBridge.003.dll` (Unity Internal API Bridge)
-3. Copy the DLLs from `BepInEx\plugins\Softwyx.CareerLog\managed\` to your game's `EscapeFromTarkov_Data\Managed\` folder.
-4. Start the game.
+    - `EscapeFromTarkov_Data\Managed\Unity.VectorGraphics.dll` (Unity Vector Graphics library)
+    - `EscapeFromTarkov_Data\Managed\Unity.InternalAPIEngineBridge.003.dll` (Unity Internal API Bridge)
+3. Start the game.
 
 **First launch** may create a config file:
 
